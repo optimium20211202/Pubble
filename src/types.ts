@@ -15,3 +15,8 @@ export interface ReplyData {
   content: string;
   author: Author;
 }
+
+export interface gptMessage {
+  role: "system" | "user" | "assistant";
+  content: string;
+}
