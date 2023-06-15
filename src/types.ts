@@ -7,7 +7,7 @@ export interface TweetData {
   id: string;
   content: string;
   author: Author;
-  replies: ReplyData[];
+  // replies: ReplyData[];
 }
 
 export interface ReplyData {

@@ -1,4 +1,5 @@
 import React from "react";
+import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
 import { TweetData } from "types";
 
 interface TweetProps {
@@ -7,15 +8,25 @@ interface TweetProps {
 
 const Tweet: React.FC<TweetProps> = ({ tweetData }) => {
   return (
-    <div className="rounded bg-white p-4 my-2 shadow md:flex md:items-start md:space-x-4">
-      <img
-        src={tweetData.author.profilePicture}
-        alt={tweetData.author.name}
-        className="w-10 h-10 rounded-full"
-      />
-      <div className="md:flex-1">
-        <h2 className="font-bold">{tweetData.author.name}</h2>
-        <p>{tweetData.content}</p>
+    <div className="card bordered w-full mx-auto mb-4">
+      <div className="card-body">
+        <div className="flex items-center">
+          <img
+            src={tweetData.author.profilePicture}
+            alt={tweetData.author.name}
+            className="w-12 h-12 rounded-full mr-2"
+          />
+          <h2 className="card-title">{tweetData.author.name}</h2>
+        </div>
+        <p className="my-2">{tweetData.content}</p>
+        <div className="justify-end card-actions">
+          <button className="btn btn-sm btn-circle">
+            <AiOutlineMessage />
+          </button>
+          <button className="btn btn-sm btn-circle">
+            <AiOutlineHeart />
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,10 @@ class Document extends NextDocument<Props> {
     return (
       // https://daisyui.com/docs/themes/
       <Html data-theme="light">
-        <Head />
+        <Head>
+          <meta name="description" content="" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <body>
           <Main />
           <NextScript />
