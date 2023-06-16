@@ -4,16 +4,16 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useRecoilValue } from "recoil";
 import { contentsState } from "atoms/ContentsState";
+import Link from "next/link";
 const TinderCard = dynamic(() => import("react-tinder-card"), {
   ssr: false,
 });
 
 type Direction = "up" | "down" | "left" | "right";
 
-export default function Game() {
-  const contents = useRecoilValue(contentsState);
-  if (contents.length === 0) {
-    return (
+const Error = () => {
+  return (
+    <>
       <div className="alert alert-error">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,18 @@ export default function Game() {
         </svg>
         <span>Error!</span>
       </div>
-    );
+      <Link href="/">
+        <button className="btn primary btn-wide mt-10">Topに戻る</button>
+      </Link>
+    </>
+  );
+};
+
+export default function Game() {
+  const contents = useRecoilValue(contentsState);
+
+  if (contents.length === 0) {
+    return <Error />;
   }
   const onSwipe = (direction: Direction) => {
     console.log("You swiped: " + direction);
@@ -41,7 +52,7 @@ export default function Game() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="h-screen overflow-hidden">
       <Head>
         <title>フィルターバブル体験</title>
       </Head>
@@ -50,13 +61,17 @@ export default function Game() {
       </header>
 
       <main className="h-full flex justify-center">
-        <TinderCard
-          onSwipe={onSwipe}
-          onCardLeftScreen={() => onCardLeftScreen("fooBar")}
-          preventSwipe={["right", "left"]}
-        >
-          <Tweet tweetData={contents[0]} />
-        </TinderCard>
+        {contents.map((content) => (
+          <TinderCard
+            className="swipe"
+            onSwipe={onSwipe}
+            onCardLeftScreen={() => onCardLeftScreen("fooBar")}
+            preventSwipe={["right", "left"]}
+            key={content.id}
+          >
+            <Tweet tweetData={content} />
+          </TinderCard>
+        ))}
       </main>
 
       <footer className="h-14 flex items-center px-10">

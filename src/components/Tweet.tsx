@@ -8,7 +8,7 @@ interface TweetProps {
 
 const Tweet: React.FC<TweetProps> = ({ tweetData }) => {
   return (
-    <div className="card bordered w-full mx-auto mb-4">
+    <div className="tinderCard bordered w-60 sm:w-80 mx-auto mb-4">
       <div className="card-body">
         <div className="flex items-center">
           <img
@@ -20,12 +20,13 @@ const Tweet: React.FC<TweetProps> = ({ tweetData }) => {
         </div>
         <p className="my-2">{tweetData.content}</p>
         <div className="justify-end card-actions">
-          <button className="btn btn-sm btn-circle">
+          {/* react-iconsのelementをtinder cardのなかでclickするとエラーになる... */}
+          <div className="btn btn-sm btn-circle">
             <AiOutlineMessage />
-          </button>
-          <button className="btn btn-sm btn-circle">
+          </div>
+          <div className="btn btn-sm btn-circle">
             <AiOutlineHeart />
-          </button>
+          </div>
         </div>
       </div>
     </div>
