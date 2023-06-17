@@ -81,7 +81,7 @@ export default function Game() {
   }
 
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="h-screen">
       <Head>
         <title>フィルターバブル体験</title>
       </Head>
