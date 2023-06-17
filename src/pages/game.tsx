@@ -81,12 +81,12 @@ export default function Game() {
   }
 
   return (
-    <div className="">
+    <div className="h-screen">
       <Head>
         <title>フィルターバブル体験</title>
       </Head>
-      <main className="h-full flex flex-col mt-10 mx-auto max-w-[400px] relative">
-        <div className="px-4">
+      <main className="h-full flex flex-col mx-auto max-w-[400px] px-4 relative">
+        <div className="mt-10">
           <div className="text-left mb-2 text-sm font-bold">⚡️ トピック</div>
           <div className="topic text-center" style={{ width: "100%" }}>
             ジェンダー平等について
