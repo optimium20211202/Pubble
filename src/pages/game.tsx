@@ -81,11 +81,14 @@ export default function Game() {
   }
 
   return (
-    <div className="h-screen">
+    <div
+      className="h-screen"
+      style={{ background: "linear-gradient(#DCFBFF, #F7D8FF)" }}
+    >
       <Head>
         <title>フィルターバブル体験</title>
       </Head>
-      <main className="h-full flex flex-col mx-auto max-w-[400px] px-4 relative">
+      <main className="h-full flex flex-col mx-auto max-w-[400px] px-4">
         <div className="mt-10">
           <div className="text-left mb-2 text-sm font-bold">⚡️ トピック</div>
           <div className="topic text-center" style={{ width: "100%" }}>

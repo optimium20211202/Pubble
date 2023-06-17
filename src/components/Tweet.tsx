@@ -8,7 +8,7 @@ interface TweetProps {
 
 const Tweet: React.FC<TweetProps> = ({ tweetData }) => {
   return (
-    <div className="tinderCard w-[366px] h-[340px] mb-4">
+    <div className="tinderCard w-[340px] h-[340px] mb-4">
       <div className="card-body h-full p-6">
         <div className="flex items-center">
           <img

@@ -106,13 +106,13 @@ export default function Home() {
     router.push("/game");
   };
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#F5F5F5]">
       <Head>
         <title>テーマ選択</title>
       </Head>
 
       <header className="h-14 flex items-center px-10">
-        <h1 className="text-2xl">サービス名</h1>
+        {/* <h1 className="text-2xl">サービス名</h1> */}
       </header>
 
       <main className="flex-grow flex flex-col items-center justify-center mb-32">
