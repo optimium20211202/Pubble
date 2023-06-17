@@ -81,15 +81,22 @@ export default function Game() {
   }
 
   return (
-    <div className="h-screen">
+    <div className="">
       <Head>
         <title>フィルターバブル体験</title>
       </Head>
-      <header className="h-14 flex items-center px-10">
+      {/* <header className="h-14 flex items-center px-10">
         <h1 className="text-2xl">フィルターバブル体験</h1>
-      </header>
+      </header> */}
 
-      <main className="h-full flex justify-center mt-10">
+      <main className="h-full flex flex-col mt-10 mx-auto max-w-[400px]">
+        <div className="px-4 mb-6">
+          <div className="text-left mb-2 text-sm font-bold">⚡️ トピック</div>
+          <div className="topic text-center" style={{ width: "100%" }}>
+            ジェンダー平等について
+          </div>
+          <div className="text-left mt-6 text-sm font-bold">🚀 おすすめ</div>
+        </div>
         {contents.map((content, index) => (
           <SwipeableCard
             index={index}
@@ -99,22 +106,10 @@ export default function Game() {
           >
             <Tweet tweetData={content} />
           </SwipeableCard>
-          // <TinderCard
-          //   ref={childRefs[index]}
-          //   className="swipe"
-          //   onSwipe={onSwipe}
-          //   // onCardLeftScreen={() => onCardLeftScreen("fooBar")}
-          //   preventSwipe={["up", "down"]}
-          //   swipeRequirementType="position"
-          //   swipeThreshold={30}
-          //   key={index}
-          // >
-          //   <Tweet tweetData={content} />
-          // </TinderCard>
         ))}
-        <div className="mt-60 flex justify-center space-x-16">
+        <div className="mt-72 flex justify-center space-x-24">
           <button
-            className="btn btn-circle bg-red-500"
+            className="btn btn-circle bg-[#D45454]"
             onClick={() => swipe("left")}
           >
             <svg
@@ -127,31 +122,30 @@ export default function Game() {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="4"
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
           </button>
           <button
-            className="btn btn-circle bg-green-500"
+            className="btn btn-circle bg-[#41B55A]"
             onClick={() => swipe("right")}
           >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              width="26"
+              height="24"
+              viewBox="0 0 26 24"
               fill="none"
-              viewBox="0 0 24 24"
-              stroke="white"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <circle cx="12" cy="12" r="10" />
+              <path
+                d="M19.562 0C15.1666 0 13 4.36362 13 4.36362C13 4.36362 10.8335 0 6.43806 0C2.86596 0 0.0372528 3.00953 0.000692198 6.60066C-0.073783 14.0549 5.87273 19.3561 12.3907 23.8111C12.5704 23.9342 12.7827 24 13 24C13.2173 24 13.4297 23.9342 13.6093 23.8111C20.1266 19.3561 26.0731 14.0549 25.9993 6.60066C25.9628 3.00953 23.1341 0 19.562 0Z"
+                fill="white"
+              />
             </svg>
           </button>
         </div>
       </main>
-
-      <footer className="h-14 flex items-center px-10">
-        <h1 className="text-sm">Footer</h1>
-      </footer>
     </div>
   );
 }

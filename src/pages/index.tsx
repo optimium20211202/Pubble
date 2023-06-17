@@ -96,14 +96,14 @@ export default function Home() {
   const setContentsState = useSetRecoilState(contentsState);
 
   const onClickTheme = async (theme: string) => {
-    // const res = await fetch("/api/contents", {
-    //   method: "POST",
-    //   body: JSON.stringify({ theme }),
-    // });
-    // const contents = (await res.json()) as TweetData[];
-    // console.log(contents);
-    // setContentsState(contents);
-    // router.push("/game");
+    const res = await fetch("/api/contents", {
+      method: "POST",
+      body: JSON.stringify({ theme }),
+    });
+    const contents = (await res.json()) as TweetData[];
+    console.log(contents);
+    setContentsState(contents);
+    router.push("/game");
   };
   return (
     <div className="min-h-screen flex flex-col">
