@@ -119,7 +119,7 @@ export default function Home() {
         <div className="text-3xl font-bold">興味ジャンル</div>
         {/* <div className="text-sm mt-2">テーマを選択してください</div> */}
 
-        <div className="flex flex-col items-center mt-5">
+        <div className="flex flex-col items-center mt-5 px-4">
           <div className="flex flex-col items-center">
             {themeItems.map((theme, index) => (
               <Theme key={index} theme={theme} onClickTheme={onClickTheme} />

@@ -85,11 +85,7 @@ export default function Game() {
       <Head>
         <title>フィルターバブル体験</title>
       </Head>
-      {/* <header className="h-14 flex items-center px-10">
-        <h1 className="text-2xl">フィルターバブル体験</h1>
-      </header> */}
-
-      <main className="h-full flex flex-col mt-10 mx-auto max-w-[400px]">
+      <main className="h-full flex flex-col mt-10 mx-auto max-w-[400px] relative">
         <div className="px-4 mb-6">
           <div className="text-left mb-2 text-sm font-bold">⚡️ トピック</div>
           <div className="topic text-center" style={{ width: "100%" }}>
