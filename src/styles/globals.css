@@ -70,14 +70,15 @@ a {
 }
 
 .topic {
-  width: 140px;
-  height: 28px;
-  left: 13px;
-  top: 14rem;
+  width: 8.75rem; 
+  height: 1.75rem;
+  left: 0.8125rem;
+  top: 14rem; 
   background: #FFFFFF;
   color: #444444;
   font-weight: 860;
-  font-size: 14px;
-  border: 2px solid #444444;
+  font-size: 0.875rem;
+  border: 0.125rem solid #444444; 
 }
+
 
