@@ -40,7 +40,7 @@ a {
 
 .swipe {
   position: absolute;
-  top: 190px;
+  top: 9.6rem;
   left: 0;
   right: 0;
   display: flex;
@@ -60,8 +60,8 @@ a {
 
 
 .roundButton {
-  width: 240px;
-  height: 48px;
+  width: 15rem; /* 240px / 16px = 15rem */
+  height: 3rem; /* 48px / 16px = 3rem */
   background: #FFFFFF;
   border: 3px solid #D55454;
   color:#D55454;
@@ -73,7 +73,7 @@ a {
   width: 140px;
   height: 28px;
   left: 13px;
-  top: 227px;
+  top: 14rem;
   background: #FFFFFF;
   color: #444444;
   font-weight: 860;

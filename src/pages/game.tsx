@@ -106,7 +106,7 @@ export default function Game() {
             <Tweet tweetData={content} />
           </SwipeableCard>
         ))}
-        <div className="mt-[400px] flex justify-center space-x-24 mb-10">
+        <div className="mt-80 flex justify-center space-x-24 mb-10">
           <button
             className="btn btn-circle bg-[#D45454]"
             onClick={() => swipe("left")}
