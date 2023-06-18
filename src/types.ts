@@ -4,10 +4,17 @@
 // }
 
 export interface TweetData {
-  id: string;
+  id: number;
   content: string;
   name: string;
   profilePicture: string;
+  approvalFlag: boolean;
+  viewed: boolean;
+}
+
+export interface GptOutputData {
+  Pros: string[];
+  Cons: string[];
 }
 
 // export interface ReplyData {
