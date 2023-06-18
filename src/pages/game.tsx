@@ -88,13 +88,13 @@ export default function Game() {
       <Head>
         <title>フィルターバブル体験</title>
       </Head>
-      <main className="relative h-full flex flex-col mx-auto max-w-[400px] px-4">
+      <main className="relative h-full flex flex-col mx-auto max-w-96 px-4">
         <div className="mt-10">
           <div className="text-left mb-2 text-sm font-bold">⚡️ トピック</div>
           <div className="topic text-center" style={{ width: "100%" }}>
             ジェンダー平等について
           </div>
-          <div className="text-left mt-6 text-sm font-bold">🚀 おすすめ</div>
+          <div className="text-left mt-8 text-sm font-bold">🚀 おすすめ</div>
         </div>
         {contents.map((content, index) => (
           <SwipeableCard
