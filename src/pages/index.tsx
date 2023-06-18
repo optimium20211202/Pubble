@@ -96,9 +96,20 @@ export default function Home() {
   const setContentsState = useSetRecoilState(contentsState);
 
   const onClickTheme = async (theme: string) => {
+    // const res = await fetch("/api/contents", {
+    //   method: "POST",
+    //   body: JSON.stringify({ theme }),
+    // });
+    // const contents = (await res.json()) as TweetData[];
+    // console.log(contents);
+    // setContentsState(contents);
+    // router.push("/game");
+  };
+
+  const generateContents = async () => {
     const res = await fetch("/api/contents", {
       method: "POST",
-      body: JSON.stringify({ theme }),
+      body: JSON.stringify({ theme: "テーマ" }),
     });
     const contents = (await res.json()) as TweetData[];
     console.log(contents);
@@ -130,7 +141,12 @@ export default function Home() {
         {/* <div className="flex-grow" /> */}
 
         <Link href="/game">
-          <button className="roundButton fixed bottom-16 left-1/2 transform -translate-x-1/2">
+          <button
+            className="roundButton fixed bottom-16 left-1/2 transform -translate-x-1/2"
+            onClick={() => {
+              generateContents();
+            }}
+          >
             完了
           </button>
         </Link>

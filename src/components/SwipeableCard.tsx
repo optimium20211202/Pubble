@@ -11,19 +11,19 @@ interface API {
 type Props = {
   index: number;
   onSwipe: (direction: Direction) => void;
-  childRefs: RefObject<API>[];
+  childRef: RefObject<API>;
   children: ReactNode;
 };
 
 const SwipeableCard: React.FC<Props> = ({
   index,
   onSwipe,
-  childRefs,
+  childRef,
   children,
 }) => {
   return (
     <TinderCard
-      ref={childRefs[index]}
+      ref={childRef}
       className="swipe"
       onSwipe={onSwipe}
       preventSwipe={["up", "down"]}

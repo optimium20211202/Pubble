@@ -5,11 +5,8 @@ import dynamic from "next/dynamic";
 import { useRecoilValue } from "recoil";
 import { contentsState } from "atoms/ContentsState";
 import Link from "next/link";
-import { RefObject, createRef, useMemo, useState } from "react";
-// import SwipeableCard from "components/SwipeableCard";
-// const TinderCard = dynamic(() => import("react-tinder-card"), {
-//   ssr: false,
-// });
+import { RefObject, createRef, useEffect, useMemo, useState } from "react";
+import router from "next/router";
 
 const SwipeableCard = dynamic(() => import("components/SwipeableCard"), {
   ssr: false,
@@ -49,17 +46,25 @@ const Error = () => {
 
 export default function Game() {
   const contents = useRecoilValue(contentsState);
+  console.log(contents, contents.length);
   const [currentIndex, setCurrentIndex] = useState(contents.length - 1);
   const canSwipe = currentIndex >= 0;
+
+  useEffect(() => {
+    //  server side renderingだと初回のrender時にcontentsが空になるので
+    if (contents.length > 0) {
+      setCurrentIndex(contents.length - 1);
+    }
+  }, [contents.length]);
 
   const onSwipe = (direction: Direction) => {
     console.log("You swiped: " + direction);
     setCurrentIndex(currentIndex - 1);
   };
 
-  const onCardLeftScreen = (myIdentifier: string) => {
-    console.log(myIdentifier + " left the screen");
-  };
+  // const onCardLeftScreen = (myIdentifier: string) => {
+  //   console.log(myIdentifier + " left the screen");
+  // };
 
   const childRefs: RefObject<API>[] = useMemo(
     () =>
@@ -69,6 +74,7 @@ export default function Game() {
     [contents.length]
   );
 
+  console.log(currentIndex);
   const swipe = async (direction: Direction) => {
     console.log(childRefs[currentIndex]?.current);
     if (canSwipe && currentIndex < contents.length) {
@@ -76,9 +82,9 @@ export default function Game() {
     }
   };
 
-  if (contents.length === 0) {
-    return <Error />;
-  }
+  // if (contents.length === 0) {
+  //   return <Error />;
+  // }
 
   return (
     <div
@@ -100,50 +106,60 @@ export default function Game() {
           <SwipeableCard
             index={index}
             onSwipe={onSwipe}
-            childRefs={childRefs}
+            childRef={childRefs[index]}
             key={index}
           >
             <Tweet tweetData={content} />
           </SwipeableCard>
         ))}
-        <div className="mt-80 flex justify-center space-x-24 mb-10">
-          <button
-            className="btn btn-circle bg-[#D45454]"
-            onClick={() => swipe("left")}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="white"
-              viewBox="0 0 24 24"
-              stroke="white"
+        {currentIndex < 0 ? (
+          <div className="w-full flex justify-center">
+            <Link href="/">
+              <button className="btn btn-outline btn-wide mt-10">
+                Topに戻る
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div className="mt-80 flex justify-center space-x-24 mb-10">
+            <button
+              className="btn btn-circle bg-[#D45454]"
+              onClick={() => swipe("left")}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="4"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-          <button
-            className="btn btn-circle bg-[#41B55A]"
-            onClick={() => swipe("right")}
-          >
-            <svg
-              width="26"
-              height="24"
-              viewBox="0 0 26 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19.562 0C15.1666 0 13 4.36362 13 4.36362C13 4.36362 10.8335 0 6.43806 0C2.86596 0 0.0372528 3.00953 0.000692198 6.60066C-0.073783 14.0549 5.87273 19.3561 12.3907 23.8111C12.5704 23.9342 12.7827 24 13 24C13.2173 24 13.4297 23.9342 13.6093 23.8111C20.1266 19.3561 26.0731 14.0549 25.9993 6.60066C25.9628 3.00953 23.1341 0 19.562 0Z"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
                 fill="white"
-              />
-            </svg>
-          </button>
-        </div>
+                viewBox="0 0 24 24"
+                stroke="white"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <button
+              className="btn btn-circle bg-[#41B55A]"
+              onClick={() => swipe("right")}
+            >
+              <svg
+                width="26"
+                height="24"
+                viewBox="0 0 26 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.562 0C15.1666 0 13 4.36362 13 4.36362C13 4.36362 10.8335 0 6.43806 0C2.86596 0 0.0372528 3.00953 0.000692198 6.60066C-0.073783 14.0549 5.87273 19.3561 12.3907 23.8111C12.5704 23.9342 12.7827 24 13 24C13.2173 24 13.4297 23.9342 13.6093 23.8111C20.1266 19.3561 26.0731 14.0549 25.9993 6.60066C25.9628 3.00953 23.1341 0 19.562 0Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
       </main>
     </div>
   );
