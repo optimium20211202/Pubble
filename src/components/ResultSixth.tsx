@@ -27,7 +27,7 @@ const ResultFirst: React.FC<{
       >
         <Image src={"/result/result6.png"} fill={true} alt="prize" />
       </div>
-      <div className="w-full flex flex-col items-center justify-end mt-10 pb-4">
+      <div className="w-full flex flex-col items-center justify-end mt-6">
         <Link href="/">
           <button className="btn btn-white btn-wide rounded-3xl shadow-lg">
             トップへ戻る

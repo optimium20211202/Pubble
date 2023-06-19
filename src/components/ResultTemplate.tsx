@@ -48,7 +48,7 @@ const ResultTemplate: React.FC<Props> = ({
         </div>
       )}
 
-      <div className="w-full flex flex-col items-center justify-end mt-10 pb-4">
+      <div className="w-full flex flex-col items-center justify-end mt-6">
         {buttonTopText && (
           <button
             className="btn btn-white btn-wide rounded-3xl shadow-lg"

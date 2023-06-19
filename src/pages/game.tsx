@@ -145,7 +145,7 @@ export default function Game() {
 
   return (
     <div
-      className="h-screen"
+      className="h-[calc(100dvh)]"
       style={{ background: "linear-gradient(#DCFBFF, #F7D8FF)" }}
     >
       <Head>
