@@ -5,6 +5,8 @@ import router from "next/router";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { TweetData } from "types";
+import Image from "next/image";
+
 type ThemeItem = {
   genre: string;
   topics: string[];
@@ -55,6 +57,15 @@ const themeItems: ThemeItem[] = [
   },
 ];
 
+const gifgameTexts = [
+  "赤ちゃんを上手に起こしてあげよう！",
+  "赤ちゃんを上手に起こしてあげよう！",
+  "赤ちゃんを上手に起こしてあげよう！",
+  "赤ちゃんを上手に起こしてあげよう！",
+  "赤ちゃんを上手に起こしてあげよう！",
+  "赤ちゃんを上手に起こしてあげよう！",
+];
+
 const Theme = ({
   theme,
   onClickTheme,
@@ -92,7 +103,10 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState("");
   const [inputTheme, setInputTheme] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [showInputModal, setShowInputModal] = useState(false);
+  const [showWatingModal, setShowWaitingModal] = useState(true);
+  const [gifgameNo, setGifgameNo] = useState(0);
+
   const onClickTheme = async (theme: string) => {
     setSelectedTheme(theme);
   };
@@ -143,7 +157,7 @@ export default function Home() {
         <button
           className="roundButton1 fixed bottom-32 left-1/2 transform -translate-x-1/2"
           onClick={() => {
-            setShowModal(true);
+            setShowInputModal(true);
           }}
           disabled={isLoading}
         >
@@ -163,13 +177,13 @@ export default function Home() {
           これでOK
         </button>
 
-        {showModal && (
-          <dialog id="my_modal_2" className="modal modal-open">
+        {showInputModal && (
+          <dialog className="modal modal-open">
             <form method="dialog" className="modal-box">
               <button
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                 onClick={() => {
-                  setShowModal(false);
+                  setShowInputModal(false);
                 }}
               >
                 ✕
@@ -199,11 +213,49 @@ export default function Home() {
             <form method="dialog" className="modal-backdrop">
               <button
                 onClick={() => {
-                  setShowModal(false);
+                  setShowInputModal(false);
                 }}
               >
                 close
               </button>
+            </form>
+          </dialog>
+        )}
+
+        {showWatingModal && (
+          <dialog className="modal modal-open">
+            <form method="dialog" className="modal-box">
+              <div className="font-bold text-lg text-center">
+                🦖 コンテンツ準備中{" "}
+                <div className="loading loading-spinner align-middle"></div>
+              </div>
+              <div className="font-bold mt-4">
+                {gifgameTexts[gifgameNo]}タップでストップ！
+              </div>
+              <div className="flex justify-center items-center">
+                <Image
+                  src={`/gamegif/${gifgameNo + 1}.gif`}
+                  width={300}
+                  height={300}
+                  alt="game gif"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+
+              <div className="text-center mt-4">
+                <button
+                  className="roundButton1"
+                  onClick={() => {
+                    if (gifgameNo === 5) {
+                      setGifgameNo(0);
+                      return;
+                    }
+                    setGifgameNo(gifgameNo + 1);
+                  }}
+                >
+                  別のゲーム
+                </button>
+              </div>
             </form>
           </dialog>
         )}
