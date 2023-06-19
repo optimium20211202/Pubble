@@ -31,12 +31,14 @@ const SwipeableCard: React.FC<Props> = ({
       className={hide ? "hidden" : "swipe"}
       onSwipe={onSwipe}
       onCardLeftScreen={() => onCardLeftScreen(index)}
-      // PCでswipe操作するとうまく動作しないので...
-      preventSwipe={
-        "ontouchstart" in window
-          ? ["up", "down"]
-          : ["left", "right", "up", "down"]
-      }
+      // https://github.com/3DJakob/react-tinder-card/issues/138
+      // swipe操作するとonSwipeが複数回呼ばれてしまう不具合があるのでswipe無効化する...
+      // preventSwipe={
+      //   "ontouchstart" in window
+      //     ? ["up", "down"]
+      //     : ["left", "right", "up", "down"]
+      // }
+      preventSwipe={["left", "right", "up", "down"]}
       swipeRequirementType="position"
       swipeThreshold={30}
       key={index}

@@ -84,7 +84,7 @@ export default function Game() {
   }, [contents.length]);
 
   const onSwipe = (direction: Direction) => {
-    // console.log("You swiped: " + direction);
+    console.log("You swiped: " + direction);
     const selectedLabel = contents[currentIndex].label;
     const isPositive = direction == "right";
     const adj = selectedLabel == 1 ? 1 : -1;
