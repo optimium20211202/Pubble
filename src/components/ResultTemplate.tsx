@@ -26,7 +26,7 @@ const ResultTemplate: React.FC<Props> = ({
   children,
 }) => {
   return (
-    <main className="relative flex flex-col items-center mx-auto w-80 mt-10 p-2">
+    <main className="relative flex flex-col items-center mx-auto w-76 mt-10">
       <div className="text-xl font-black text-center">{title}</div>
 
       {imagePath && (

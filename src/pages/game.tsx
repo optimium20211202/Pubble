@@ -1,12 +1,13 @@
 import Tweet from "components/Tweet";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { contentsState } from "atoms/ContentsState";
 import Link from "next/link";
 import { RefObject, createRef, useEffect, useMemo, useState } from "react";
 import { TweetData } from "types";
 import router from "next/router";
+import { displayedIndexesState } from "atoms/DisplayedIndexesState";
 
 // 最低でもここの確率で反対意見が出るようにする
 const RANDOM_LIMIT = 0.2;
@@ -68,6 +69,7 @@ const getNextTargetCardItem = (
 
 export default function Game() {
   const contents = useRecoilValue(contentsState);
+  const setDisplayedIndexesState = useSetRecoilState(displayedIndexesState);
 
   const [currentIndex, setCurrentIndex] = useState(contents.length - 1);
   const [filteredIindexes, setFilteredIindexes] = useState<number[]>([
@@ -107,15 +109,17 @@ export default function Game() {
       updatedScore
     );
 
+    if (_nextIndex < 0) {
+      setDisplayedIndexesState(filteredIindexes);
+      console.log("finish!!!!");
+      router.push("/result");
+    }
+
     const _filteredIindexes = filteredIindexes.filter(
       (index) => index !== targetCardItem
     );
     setFilteredIindexes(_filteredIindexes);
 
-    if (_nextIndex < 0) {
-      console.log("finish!!!!");
-      router.push("/result");
-    }
     setCurrentIndex(_nextIndex);
   };
 

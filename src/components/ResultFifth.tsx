@@ -11,7 +11,7 @@ const ResultFirst: React.FC<{
       title="🎓  これから大人になるあなたへ"
       buttonTopText="わかった"
     >
-      <div className="card w-80 bg-base-100 shadow-xl mt-4 p-4">
+      <div className="card w-76 bg-base-100 shadow-xl mt-4 p-4">
         <div className="text-base font-bold">
           世界はひろく、たくさんの人がいて、みんな違う考えを持っています。
           <br />

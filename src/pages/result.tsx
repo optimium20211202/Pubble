@@ -1,3 +1,4 @@
+import { displayedNumsState } from "atoms/DisplayedNumsState";
 import { Puddle } from "components/Puddle";
 import ResultFifth from "components/ResultFifth";
 import ResultFirst from "components/ResultFirst";
@@ -10,16 +11,19 @@ import Head from "next/head";
 // import Image from "next/image";
 // import Link from "next/link";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
 import { ResultStep } from "types";
 
 export default function Result() {
+  const displayedNums = useRecoilValue(displayedNumsState);
+
   const [resultStep, setResultStep] = useState<ResultStep>(ResultStep.First);
 
   const onClickNext = (nextStep: ResultStep) => {
     setResultStep(nextStep);
   };
-
-  console.log(resultStep);
+  console.log(displayedNums);
+  // console.log(resultStep);
   return (
     <div
       className="h-screen"
@@ -39,7 +43,12 @@ export default function Result() {
         <ResultSecond onClickNext={onClickNext} />
       )}
       {resultStep == ResultStep.Third && (
-        <ResultThird onClickNext={onClickNext} />
+        <ResultThird
+          onClickNext={onClickNext}
+          // 多く表示された方をユーザーの傾向としておく。logic的にはそうなるはず。
+          displayedNumsCons={Math.min(...displayedNums)}
+          displayedNumsPros={Math.max(...displayedNums)}
+        />
       )}
       {resultStep == ResultStep.Fourth1 && (
         <ResultForth1 onClickNext={onClickNext} />

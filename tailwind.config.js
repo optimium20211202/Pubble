@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         body: ["Noto Sans JP", "sans-serif"],
       },
+      width: {
+        76: "19rem",
+      },
     },
   },
   daisyui: {
