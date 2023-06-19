@@ -6,10 +6,12 @@ import { contentsState } from "atoms/ContentsState";
 import Link from "next/link";
 import { RefObject, createRef, useEffect, useMemo, useState } from "react";
 import { TweetData } from "types";
-// import router from "next/router";
+import router from "next/router";
 
 // 最低でもここの確率で反対意見が出るようにする
 const RANDOM_LIMIT = 0.2;
+
+// const isBlowser = typeof window !== "undefined";
 
 // ssrだと機能しないので
 const SwipeableCard = dynamic(() => import("components/SwipeableCard"), {
@@ -110,6 +112,10 @@ export default function Game() {
     );
     setFilteredIindexes(_filteredIindexes);
 
+    if (_nextIndex < 0) {
+      console.log("finish!!!!");
+      router.push("/result");
+    }
     setCurrentIndex(_nextIndex);
   };
 
@@ -167,7 +173,7 @@ export default function Game() {
           )
           // )
         )}
-        {currentIndex < 0 ? (
+        {contents.length === 0 ? (
           <div className="w-full flex justify-center">
             <Link href="/">
               <button className="btn btn-outline btn-wide mt-10">
