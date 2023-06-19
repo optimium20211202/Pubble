@@ -6,7 +6,8 @@ import { useRecoilValue } from "recoil";
 import { contentsState } from "atoms/ContentsState";
 import Link from "next/link";
 import { RefObject, createRef, useEffect, useMemo, useState } from "react";
-import router from "next/router";
+import { TweetData } from "types";
+// import router from "next/router";
 
 const SwipeableCard = dynamic(() => import("components/SwipeableCard"), {
   ssr: false,
@@ -18,52 +19,95 @@ interface API {
   restoreCard(): Promise<void>;
 }
 
-const Error = () => {
-  return (
-    <>
-      <div className="alert alert-error">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="stroke-current shrink-0 h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span>Error!</span>
-      </div>
-      <Link href="/">
-        <button className="btn primary btn-wide mt-10">Topに戻る</button>
-      </Link>
-    </>
-  );
+function* range(start: number, end: number) {
+  for (let i = start; i < end; i++) {
+    yield i;
+  }
+}
+
+const getNextIndex = (
+  currentIndex: number,
+  filteredIindexes: number[]
+): number => {
+  // filteredIndexに含まれていればskipする
+  if (filteredIindexes.includes(currentIndex - 1)) {
+    return getNextIndex(currentIndex - 1, filteredIindexes);
+  }
+  return currentIndex - 1;
+};
+
+const getNextTargetCardItem = (
+  contens: TweetData[],
+  lastIndex: number,
+  prob: number
+): number => {
+  console.log(lastIndex);
+  // probは0~1.0
+  const random = Math.random();
+  const targetLabel = random < prob ? 0 : 1;
+
+  const filteredContents = contens
+    .map((content, index) => ({ label: content.label, index }))
+    .filter(({ label, index }) => {
+      return index < lastIndex && label == targetLabel;
+    })
+    .map(({ index }) => index);
+
+  if (filteredContents.length === 0) {
+    return -1;
+  }
+
+  return Math.max(...filteredContents);
 };
 
 export default function Game() {
   const contents = useRecoilValue(contentsState);
-  console.log(contents, contents.length);
+
   const [currentIndex, setCurrentIndex] = useState(contents.length - 1);
+  const [filteredIindexes, setFilteredIindexes] = useState<number[]>([
+    ...range(0, contents.length - 5),
+  ]);
   const canSwipe = currentIndex >= 0;
+
+  const [score, setScore] = useState(0.5);
 
   useEffect(() => {
     //  server side renderingだと初回のrender時にcontentsが空になるので
     if (contents.length > 0) {
       setCurrentIndex(contents.length - 1);
+      setFilteredIindexes([...range(0, contents.length - 5)]);
     }
   }, [contents.length]);
 
   const onSwipe = (direction: Direction) => {
     console.log("You swiped: " + direction);
-    setCurrentIndex(currentIndex - 1);
+    const selectedLabel = contents[currentIndex].label;
+    const isPositive = direction == "right";
+    const adj = selectedLabel == 1 ? 1 : -1;
+    const updatedScore = Math.max(
+      0.0,
+      Math.min(isPositive ? score + 0.1 * adj : score - 0.1 * adj, 1.0)
+    );
+    setScore(updatedScore);
+    console.log(updatedScore);
+    const _nextIndex = getNextIndex(currentIndex, filteredIindexes);
+    const targetCardItem = getNextTargetCardItem(
+      contents,
+      _nextIndex,
+      updatedScore
+    );
+    console.log(targetCardItem);
+    const _filteredIindexes = filteredIindexes.filter(
+      (index) => index !== targetCardItem
+    );
+    setFilteredIindexes(_filteredIindexes);
+
+    setCurrentIndex(_nextIndex);
   };
 
-  // const onCardLeftScreen = (myIdentifier: string) => {
+  // const onCardLeftScreen = (myIdentifier: number) => {
   //   console.log(myIdentifier + " left the screen");
+  //   // setFilteredIindexes([...filteredIindexes, myIdentifier]);
   // };
 
   const childRefs: RefObject<API>[] = useMemo(
@@ -76,15 +120,11 @@ export default function Game() {
 
   console.log(currentIndex);
   const swipe = async (direction: Direction) => {
-    console.log(childRefs[currentIndex]?.current);
+    // console.log(childRefs[currentIndex]?.current);
     if (canSwipe && currentIndex < contents.length) {
       await childRefs[currentIndex]?.current?.swipe(direction); // Swipe the card!
     }
   };
-
-  // if (contents.length === 0) {
-  //   return <Error />;
-  // }
 
   return (
     <div
@@ -94,6 +134,9 @@ export default function Game() {
       <Head>
         <title>フィルターバブル体験</title>
       </Head>
+      {/* <header className="h-14 flex justify-center px-10">
+        <h1 className="text-2xl">PUBBLE</h1>
+      </header> */}
       <main className="relative h-full flex flex-col mx-auto w-80 px-4">
         <div className="mt-10">
           <div className="text-left mb-2 text-sm font-bold">⚡️ トピック</div>
@@ -102,16 +145,21 @@ export default function Game() {
           </div>
           <div className="text-left mt-6 text-sm font-bold">🚀 おすすめ</div>
         </div>
-        {contents.map((content, index) => (
-          <SwipeableCard
-            index={index}
-            onSwipe={onSwipe}
-            childRef={childRefs[index]}
-            key={index}
-          >
-            <Tweet tweetData={content} />
-          </SwipeableCard>
-        ))}
+        {contents.map(
+          (content, index) => (
+            <SwipeableCard
+              index={index}
+              hide={filteredIindexes.includes(index)}
+              onSwipe={onSwipe}
+              // onCardLeftScreen={onCardLeftScreen}
+              childRef={childRefs[index]}
+              key={index}
+            >
+              <Tweet tweetData={content} />
+            </SwipeableCard>
+          )
+          // )
+        )}
         {currentIndex < 0 ? (
           <div className="w-full flex justify-center">
             <Link href="/">

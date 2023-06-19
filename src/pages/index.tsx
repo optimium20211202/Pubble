@@ -122,9 +122,9 @@ export default function Home() {
         <title>テーマ選択</title>
       </Head>
 
-      <header className="h-14 flex items-center px-10">
-        {/* <h1 className="text-2xl">サービス名</h1> */}
-      </header>
+      {/* <header className="h-14 flex justify-center px-10">
+        <h1 className="text-2xl">PUBBLE</h1>
+      </header> */}
 
       <main className="flex-grow flex flex-col items-center justify-center mb-32">
         <div className="text-3xl font-bold">興味ジャンル</div>

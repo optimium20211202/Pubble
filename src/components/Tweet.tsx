@@ -1,12 +1,21 @@
-import React from "react";
-import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
+import React, { useEffect, useRef } from "react";
+import { AiOutlineHeart } from "react-icons/ai";
 import { TweetData } from "types";
 
 interface TweetProps {
   tweetData: TweetData;
+  // hide: boolean; //外部から渡される非表示フラグ
 }
 
 const Tweet: React.FC<TweetProps> = ({ tweetData }) => {
+  // const tweetRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   if (tweetRef.current) {
+  //     tweetRef.current.style.display = hide ? "none" : "block";
+  //   }
+  // }, [hide]);
+
   return (
     <div className="tinderCard w-72 h-72 mb-4">
       <div className="card-body h-full p-6">

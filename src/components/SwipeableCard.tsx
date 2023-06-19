@@ -10,23 +10,33 @@ interface API {
 
 type Props = {
   index: number;
+  hide?: boolean;
   onSwipe: (direction: Direction) => void;
+  onCardLeftScreen?: (myIdentifier: number) => void;
   childRef: RefObject<API>;
   children: ReactNode;
 };
 
 const SwipeableCard: React.FC<Props> = ({
   index,
+  hide = false,
   onSwipe,
+  onCardLeftScreen = () => {},
   childRef,
   children,
 }) => {
   return (
     <TinderCard
       ref={childRef}
-      className="swipe"
+      className={hide ? "hidden" : "swipe"}
       onSwipe={onSwipe}
-      preventSwipe={["up", "down"]}
+      onCardLeftScreen={() => onCardLeftScreen(index)}
+      // PCでswipe操作するとうまく動作しないので...
+      preventSwipe={
+        "ontouchstart" in window
+          ? ["up", "down"]
+          : ["left", "right", "up", "down"]
+      }
       swipeRequirementType="position"
       swipeThreshold={30}
       key={index}

@@ -3,12 +3,17 @@
 //   profilePicture: string;
 // }
 
+type LabelType = 0 | 1;
+
 export interface TweetData {
   id: string;
   content: string;
   name: string;
   profilePicture: string;
+  label: LabelType;
 }
+
+export type Contents = [TweetData[], TweetData[]];
 
 // export interface ReplyData {
 //   id: string;
