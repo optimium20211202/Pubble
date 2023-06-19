@@ -1,12 +1,14 @@
 import Image from "next/image";
 import ResultTemplate from "./ResultTemplate";
+import { ResultStep } from "types";
 
-const ResultFirst: React.FC<{ onClickNext: () => void }> = ({
-  onClickNext,
-}) => {
+const ResultFirst: React.FC<{
+  onClickNext: (nextStep: ResultStep) => void;
+}> = ({ onClickNext }) => {
   return (
     <ResultTemplate
-      onClickNext={onClickNext}
+      onClickNext1={() => onClickNext(ResultStep.Second)}
+      onClickNext2={() => onClickNext(ResultStep.Second)}
       title="🎉 おつかれさま"
       imagePath="/result/result1.png"
       imageWidth={254}

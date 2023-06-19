@@ -2,13 +2,13 @@ import Image from "next/image";
 import ResultTemplate from "./ResultTemplate";
 import { ResultStep } from "types";
 
-const ResultSecond: React.FC<{
+const ResultFirst: React.FC<{
   onClickNext: (nextStep: ResultStep) => void;
 }> = ({ onClickNext }) => {
   return (
     <ResultTemplate
-      onClickNext1={() => onClickNext(ResultStep.Third)}
-      onClickNext2={() => onClickNext(ResultStep.Third)}
+      onClickNext1={() => onClickNext(ResultStep.Fifth)}
+      onClickNext2={() => onClickNext(ResultStep.Fifth)}
       title="⚖️ 実際はすごく偏ってた"
       imagePath="/result/result2.png"
       imageWidth={270}
@@ -22,4 +22,4 @@ const ResultSecond: React.FC<{
   );
 };
 
-export default ResultSecond;
+export default ResultFirst;

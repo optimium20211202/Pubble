@@ -30,3 +30,12 @@ export interface gptMessage {
   role: "system" | "user" | "assistant";
   content: string;
 }
+
+export enum ResultStep {
+  First,
+  Second,
+  Third,
+  Fourth1,
+  Fourth2,
+  Fifth,
+}
