@@ -104,7 +104,7 @@ export default function Home() {
   const [selectedTheme, setSelectedTheme] = useState("");
   const [inputTheme, setInputTheme] = useState("");
   const [showInputModal, setShowInputModal] = useState(false);
-  const [showWatingModal, setShowWaitingModal] = useState(true);
+  const [showWatingModal, setShowWaitingModal] = useState(false);
   const [gifgameNo, setGifgameNo] = useState(0);
 
   const onClickTheme = async (theme: string) => {
@@ -112,6 +112,7 @@ export default function Home() {
   };
 
   const generateContents = async (theme: string) => {
+    setShowWaitingModal(true);
     console.log("generateContents");
     setIsLoading(true);
     const startTime = Date.now();
