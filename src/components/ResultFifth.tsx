@@ -7,18 +7,25 @@ const ResultFirst: React.FC<{
 }> = ({ onClickNext }) => {
   return (
     <ResultTemplate
-      onClickNext1={() => onClickNext(ResultStep.Fifth)}
-      onClickNext2={() => onClickNext(ResultStep.Fifth)}
-      title="⚖️ 実際はすごく偏ってた"
-      imagePath="/result/result2.png"
-      imageWidth={270}
-      imageHeight={180}
-      message={`一見、さまざまな意見が出てきたように感じますが、じつは多数が片方の意見にかたよっていました。
-
-じつは、あなたにとって都合のいい情報ばかりを流してたんです。`}
-      buttonTopText="うそだぁ！"
-      buttonBottomText="ほ…ほんとに？"
-    />
+      onClickNext1={() => onClickNext(ResultStep.Sixth)}
+      title="🎓  これから大人になるあなたへ"
+      buttonTopText="わかった"
+    >
+      <div className="card w-80 bg-base-100 shadow-xl mt-4 p-4">
+        <div className="text-base font-bold">
+          世界はひろく、たくさんの人がいて、みんな違う考えを持っています。
+          <br />
+          <br />
+          でも自分自分に都合のいい話だけを集めていると、片方だけの考え方をしてしまうことがあります。
+          <br />
+          <br />
+          だから、ネットやSNSを使う時は、「自分に都合のいい話ばかりを聞いていない？」とちょっと立ち止まって考えてみてください。
+          <br />
+          <br />
+          そうすると、いろんな意見を知ることができて、自分の考えも広がっていきますよ。
+        </div>
+      </div>
+    </ResultTemplate>
   );
 };
 

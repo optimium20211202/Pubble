@@ -2,20 +2,20 @@ import Image from "next/image";
 import { Children, ReactNode } from "react";
 
 type Props = {
-  onClickNext1: () => void;
-  onClickNext2: () => void;
+  onClickNext1?: () => void;
+  onClickNext2?: () => void;
   title: string;
   imagePath?: string;
   imageWidth?: number;
   imageHeight?: number;
-  message: string;
+  message?: string;
   buttonTopText?: string;
   buttonBottomText?: string;
   children?: ReactNode;
 };
 const ResultTemplate: React.FC<Props> = ({
-  onClickNext1,
-  onClickNext2,
+  onClickNext1 = () => {},
+  onClickNext2 = () => {},
   title,
   imagePath,
   imageWidth = 0,
@@ -42,11 +42,13 @@ const ResultTemplate: React.FC<Props> = ({
         </div>
       )}
       {children}
-      <div className="text-base font-bold mt-4 whitespace-pre-wrap">
-        {message}
-      </div>
+      {message && (
+        <div className="text-base font-bold mt-4 whitespace-pre-wrap">
+          {message}
+        </div>
+      )}
 
-      <div className="w-full flex flex-col items-center justify-end mt-10">
+      <div className="w-full flex flex-col items-center justify-end mt-10 pb-4">
         {buttonTopText && (
           <button
             className="btn btn-white btn-wide rounded-3xl shadow-lg"

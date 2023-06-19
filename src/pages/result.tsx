@@ -4,6 +4,7 @@ import ResultFirst from "components/ResultFirst";
 import ResultForth1 from "components/ResultForth1";
 import ResultForth2 from "components/ResultForth2";
 import ResultSecond from "components/ResultSecond";
+import ResultSixth from "components/ResultSixth";
 import ResultThird from "components/ResultThird";
 import Head from "next/head";
 // import Image from "next/image";
@@ -48,6 +49,9 @@ export default function Result() {
       )}
       {resultStep == ResultStep.Fifth && (
         <ResultFifth onClickNext={onClickNext} />
+      )}
+      {resultStep == ResultStep.Sixth && (
+        <ResultSixth onClickNext={onClickNext} />
       )}
     </div>
   );

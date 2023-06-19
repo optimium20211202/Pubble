@@ -38,4 +38,5 @@ export enum ResultStep {
   Fourth1,
   Fourth2,
   Fifth,
+  Sixth,
 }
