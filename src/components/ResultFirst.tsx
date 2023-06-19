@@ -1,9 +1,21 @@
 import Image from "next/image";
+import ResultTemplate from "./ResultTemplate";
 
 const ResultFirst: React.FC<{ onClickNext: () => void }> = ({
   onClickNext,
 }) => {
   return (
+    <ResultTemplate
+      onClickNext={onClickNext}
+      title="🎉 おつかれさま"
+      imagePath="/result/result1.png"
+      message={`いろいろなおすすめ投稿を通じて、あなたは、さまざまな意見について、ふれて、考えれたと思います。
+      
+でも、本当にそうなのでしょうか？`}
+      buttonTopText="本当にそうだった！"
+      buttonBottomText="どういう意味？"
+    />
+    /*
     <main className="relative flex flex-col items-center mx-auto w-80 mt-10 p-2">
       <div className="text-xl font-black text-center">🎉 おつかれさま</div>
 
@@ -34,6 +46,7 @@ const ResultFirst: React.FC<{ onClickNext: () => void }> = ({
         </button>
       </div>
     </main>
+    */
   );
 };
 
