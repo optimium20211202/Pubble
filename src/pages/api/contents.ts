@@ -6,7 +6,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log(req.body.input);
 
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.OPENAI_API_KEY,
   });
 
   const openai = new OpenAIApi(configuration);
@@ -20,9 +20,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const generateMessage = async (req: NextApiRequest, res: NextApiResponse) => {
     // 会話履歴が必要な場合はclientから全ての会話履歴を受け取る
-    console.log(req.body.input);
+    // console.log(req.body.input);
 
-    console.log(systemMessage);
+    // console.log(systemMessage);
 
     try {
       const baseCompletion = await openai.createChatCompletion({
@@ -32,6 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         temperature: 0,
       });
 
+      console.log(baseCompletion.data.choices?.[0].message);
       const message: GptOutputData = JSON.parse(
         baseCompletion.data.choices?.[0].message?.content
           ? baseCompletion.data.choices?.[0].message?.content
@@ -127,8 +128,7 @@ function convertContents(
       content: consContent,
       name: userNames[userIds[index] - 1],
       profilePicture: "/userIcons/Profile_" + userIds[index] + ".png",
-      approvalFlag: false,
-      viewed: false,
+      label: 1,
     } as TweetData;
 
     index++;
@@ -143,8 +143,7 @@ function convertContents(
       content: consContent,
       name: userNames[userIds[index] - 1],
       profilePicture: "/userIcons/Profile_" + userIds[index] + ".png",
-      approvalFlag: true,
-      viewed: false,
+      label: 0,
     } as TweetData;
 
     index++;

@@ -3,19 +3,22 @@
 //   profilePicture: string;
 // }
 
+type LabelType = 0 | 1;
+
 export interface TweetData {
   id: number;
   content: string;
   name: string;
   profilePicture: string;
-  approvalFlag: boolean;
-  viewed: boolean;
+  label: LabelType;
 }
 
 export interface GptOutputData {
   Pros: string[];
   Cons: string[];
 }
+
+export type Contents = [TweetData[], TweetData[]];
 
 // export interface ReplyData {
 //   id: string;
