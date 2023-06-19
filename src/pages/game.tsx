@@ -1,6 +1,5 @@
 import Tweet from "components/Tweet";
 import Head from "next/head";
-// import TinderCard from "react-tinder-card";
 import dynamic from "next/dynamic";
 import { useRecoilValue } from "recoil";
 import { contentsState } from "atoms/ContentsState";
@@ -9,6 +8,10 @@ import { RefObject, createRef, useEffect, useMemo, useState } from "react";
 import { TweetData } from "types";
 // import router from "next/router";
 
+// 最低でもここの確率で反対意見が出るようにする
+const RANDOM_LIMIT = 0.2;
+
+// ssrだと機能しないので
 const SwipeableCard = dynamic(() => import("components/SwipeableCard"), {
   ssr: false,
 });
@@ -36,6 +39,7 @@ const getNextIndex = (
   return currentIndex - 1;
 };
 
+// ユーザーに合わせて偏りがあるコンテンツをselect
 const getNextTargetCardItem = (
   contens: TweetData[],
   lastIndex: number,
@@ -44,7 +48,7 @@ const getNextTargetCardItem = (
   console.log(lastIndex);
   // probは0~1.0
   const random = Math.random();
-  const targetLabel = random < prob ? 0 : 1;
+  const targetLabel = prob < random ? 0 : 1;
 
   const filteredContents = contens
     .map((content, index) => ({ label: content.label, index }))
@@ -80,23 +84,27 @@ export default function Game() {
   }, [contents.length]);
 
   const onSwipe = (direction: Direction) => {
-    console.log("You swiped: " + direction);
+    // console.log("You swiped: " + direction);
     const selectedLabel = contents[currentIndex].label;
     const isPositive = direction == "right";
     const adj = selectedLabel == 1 ? 1 : -1;
+
     const updatedScore = Math.max(
-      0.0,
-      Math.min(isPositive ? score + 0.1 * adj : score - 0.1 * adj, 1.0)
+      0.0 + RANDOM_LIMIT,
+      Math.min(
+        isPositive ? score + 0.1 * adj : score - 0.1 * adj,
+        1.0 - RANDOM_LIMIT
+      )
     );
     setScore(updatedScore);
-    console.log(updatedScore);
+
     const _nextIndex = getNextIndex(currentIndex, filteredIindexes);
     const targetCardItem = getNextTargetCardItem(
       contents,
       _nextIndex,
       updatedScore
     );
-    console.log(targetCardItem);
+
     const _filteredIindexes = filteredIindexes.filter(
       (index) => index !== targetCardItem
     );
@@ -118,7 +126,6 @@ export default function Game() {
     [contents.length]
   );
 
-  console.log(currentIndex);
   const swipe = async (direction: Direction) => {
     // console.log(childRefs[currentIndex]?.current);
     if (canSwipe && currentIndex < contents.length) {

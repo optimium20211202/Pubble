@@ -2,6 +2,7 @@ import { contentsState } from "atoms/ContentsState";
 import Head from "next/head";
 import Link from "next/link";
 import router from "next/router";
+import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { TweetData } from "types";
 type ThemeItem = {
@@ -94,6 +95,7 @@ const Theme = ({
 
 export default function Home() {
   const setContentsState = useSetRecoilState(contentsState);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onClickTheme = async (theme: string) => {
     // const res = await fetch("/api/contents", {
@@ -107,6 +109,8 @@ export default function Home() {
   };
 
   const generateContents = async () => {
+    console.log("generateContents");
+    setIsLoading(true);
     const startTime = Date.now();
     const res = await fetch("/api/contents", {
       method: "POST",
@@ -150,7 +154,9 @@ export default function Home() {
           onClick={() => {
             generateContents();
           }}
+          disabled={isLoading}
         >
+          {/* {isLoading && <span className="loading loading-spinner"></span>} */}
           完了
         </button>
         {/* </Link> */}
