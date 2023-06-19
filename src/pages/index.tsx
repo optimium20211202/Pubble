@@ -1,6 +1,6 @@
 import { contentsState } from "atoms/ContentsState";
+import { Puddle } from "components/Puddle";
 import Head from "next/head";
-import Link from "next/link";
 import router from "next/router";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
@@ -12,58 +12,35 @@ type ThemeItem = {
 
 const themeItems: ThemeItem[] = [
   {
-    genre: "教育",
+    genre: "🏫 教育について",
     topics: [
-      "教育方針",
-      "性教育",
-      "スクールチョイス",
-      "学習障害",
-      "テクノロジーの使用",
-      "標準テスト",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？1",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？2",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？3",
     ],
   },
   {
-    genre: "社会",
+    genre: "🌍 社会について",
     topics: [
-      "ジェンダー平等",
-      "人種差別",
-      "LGBTQ+の権利",
-      "移民政策",
-      "経済的平等",
-      "環境問題",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？4",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？5",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？6",
     ],
   },
   {
-    genre: "政治",
+    genre: "🗳 政治について",
     topics: [
-      "財政政策",
-      "医療制度",
-      "軍事政策と国防",
-      "教育政策",
-      "銃規制",
-      "プライバシーと監視",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？7",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？8",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？9",
     ],
   },
   {
-    genre: "健康",
+    genre: "🏥 健康のついて",
     topics: [
-      "ワクチン接種",
-      "食事と栄養",
-      "運動とフィットネス",
-      "東洋医学",
-      "メンタルヘルス",
-      "睡眠",
-    ],
-  },
-  {
-    genre: "科学",
-    topics: [
-      "気候変動",
-      "遺伝子組み換え食品",
-      "人工知能",
-      "原子力エネルギー",
-      "5G技術",
-      "宇宙探査",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？10",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？11",
+      "タイムマシンがあったら、未来に行くべき？過去に行くべき？12",
     ],
   },
 ];
@@ -71,18 +48,24 @@ const themeItems: ThemeItem[] = [
 const Theme = ({
   theme,
   onClickTheme,
+  selectedTheme,
 }: {
   theme: ThemeItem;
   onClickTheme: (theme: string) => void;
+  selectedTheme: string;
 }) => {
+  console.log(selectedTheme);
   return (
     <div className="flex flex-col items-start mb-4">
-      <h2 className="text-left mb-2 text-lg font-bold">{theme.genre}</h2>
-      <div className="grid grid-cols-2 gap-2">
+      <h2 className="text-left text-lg font-bold">{theme.genre}</h2>
+      <div className="">
         {theme.topics.map((topic, index) => (
           <button
             key={index}
-            className="topic"
+            className={
+              "btn btn-block text-xs text-left mt-2 h-16 " +
+              (selectedTheme === topic ? "bg-gray-300" : "bg-[#FFFFFF]")
+            }
             onClick={() => onClickTheme(topic)}
           >
             {topic}
@@ -96,25 +79,20 @@ const Theme = ({
 export default function Home() {
   const setContentsState = useSetRecoilState(contentsState);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [selectedTheme, setSelectedTheme] = useState("");
+  const [inputTheme, setInputTheme] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const onClickTheme = async (theme: string) => {
-    // const res = await fetch("/api/contents", {
-    //   method: "POST",
-    //   body: JSON.stringify({ theme }),
-    // });
-    // const contents = (await res.json()) as TweetData[];
-    // console.log(contents);
-    // setContentsState(contents);
-    // router.push("/game");
+    setSelectedTheme(theme);
   };
 
-  const generateContents = async () => {
+  const generateContents = async (theme: string) => {
     console.log("generateContents");
     setIsLoading(true);
     const startTime = Date.now();
     const res = await fetch("/api/contents", {
       method: "POST",
-      body: JSON.stringify({ theme: "テーマ" }),
+      body: JSON.stringify({ theme: theme }),
     });
     const contents = (await res.json()) as TweetData[];
 
@@ -129,42 +107,96 @@ export default function Home() {
       <Head>
         <title>テーマ選択</title>
       </Head>
-
-      {/* <header className="h-14 flex justify-center px-10">
-        <h1 className="text-2xl">PUBBLE</h1>
-      </header> */}
+      <header className="h-14 flex justify-center px-10">
+        <Puddle className="" />
+      </header>
 
       <main className="flex-grow flex flex-col items-center justify-center mb-32">
-        <div className="text-3xl font-bold">興味ジャンル</div>
-        {/* <div className="text-sm mt-2">テーマを選択してください</div> */}
+        <div className="text-sm font-bold mt-6">
+          好きなトピックを一つ選択してください
+        </div>
 
         <div className="flex flex-col items-center mt-5 px-4">
           <div className="flex flex-col items-center">
             {themeItems.map((theme, index) => (
-              <Theme key={index} theme={theme} onClickTheme={onClickTheme} />
+              <Theme
+                key={index}
+                theme={theme}
+                onClickTheme={onClickTheme}
+                selectedTheme={selectedTheme}
+              />
             ))}
           </div>
         </div>
 
-        {/* <div className="flex-grow" /> */}
-
-        {/* <Link href="/game"> */}
         <button
-          className="roundButton fixed bottom-16 left-1/2 transform -translate-x-1/2"
+          className="roundButton1 fixed bottom-32 left-1/2 transform -translate-x-1/2"
           onClick={() => {
-            generateContents();
+            setShowModal(true);
           }}
           disabled={isLoading}
         >
-          {/* {isLoading && <span className="loading loading-spinner"></span>} */}
-          完了
+          手動で入力する
         </button>
-        {/* </Link> */}
-      </main>
 
-      {/* <footer className="h-14 flex items-center justify-center px-10">
-        <h1 className="text-sm">Footer</h1>
-      </footer> */}
+        <button
+          className="roundButton2 fixed bottom-16 left-1/2 transform -translate-x-1/2"
+          onClick={() => {
+            if (selectedTheme === "") {
+              return;
+            }
+            generateContents(selectedTheme);
+          }}
+          disabled={isLoading}
+        >
+          これでOK
+        </button>
+
+        {showModal && (
+          <dialog id="my_modal_2" className="modal modal-open">
+            <form method="dialog" className="modal-box">
+              <button
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                onClick={() => {
+                  setShowModal(false);
+                }}
+              >
+                ✕
+              </button>
+              <h3 className="font-bold text-lg text-center">手動で入力する</h3>
+              <textarea
+                className="textarea w-full h-32 mt-4"
+                placeholder="こちらにトピックを入力してください"
+                value={inputTheme}
+                onChange={(e) => setInputTheme(e.target.value)}
+              ></textarea>
+              <div className="text-center mt-4">
+                <button
+                  className="roundButton2"
+                  onClick={() => {
+                    if (inputTheme === "") {
+                      return;
+                    }
+                    generateContents(inputTheme);
+                  }}
+                  disabled={isLoading}
+                >
+                  これでOK
+                </button>
+              </div>
+            </form>
+            <form method="dialog" className="modal-backdrop">
+              <button
+                onClick={() => {
+                  setShowModal(false);
+                }}
+              >
+                close
+              </button>
+            </form>
+          </dialog>
+        )}
+      </main>
     </div>
   );
 }
