@@ -64,7 +64,6 @@ const Theme = ({
   onClickTheme: (theme: string) => void;
   selectedTheme: string;
 }) => {
-  console.log(selectedTheme);
   return (
     <div className="flex flex-col items-start mb-4">
       <h2 className="text-left text-lg font-bold">{theme.genre}</h2>
@@ -73,12 +72,14 @@ const Theme = ({
           <button
             key={index}
             className={
-              "btn btn-block text-xs text-left mt-2 h-16 justify-start " +
-              (selectedTheme === topic ? "bg-gray-300" : "bg-[#FFFFFF]")
+              "btn btn-block text-xs text-left leading-5 mt-2 h-auto justify-start " +
+              (selectedTheme === topic
+                ? "bg-[#4DABE0] text-white"
+                : "bg-[#FFFFFF]")
             }
             onClick={() => onClickTheme(topic)}
           >
-            {topic}
+            <span className="py-2">{topic}</span>
           </button>
         ))}
       </div>
