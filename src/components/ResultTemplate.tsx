@@ -4,6 +4,8 @@ type Props = {
   onClickNext: () => void;
   title: string;
   imagePath: string;
+  imageWidth: number;
+  imageHeight: number;
   message: string;
   buttonTopText: string;
   buttonBottomText: string;
@@ -12,6 +14,8 @@ const ResultTemplate: React.FC<Props> = ({
   onClickNext,
   title,
   imagePath,
+  imageWidth,
+  imageHeight,
   message,
   buttonTopText,
   buttonBottomText,
@@ -22,7 +26,11 @@ const ResultTemplate: React.FC<Props> = ({
 
       <div
         className="flex justify-center mt-10"
-        style={{ position: "relative", width: "254px", height: "204px" }}
+        style={{
+          position: "relative",
+          width: `${imageWidth}px`,
+          height: `${imageHeight}px`,
+        }}
       >
         <Image src={imagePath} fill={true} alt="logo" />
       </div>

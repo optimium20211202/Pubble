@@ -9,6 +9,8 @@ const ResultFirst: React.FC<{ onClickNext: () => void }> = ({
       onClickNext={onClickNext}
       title="🎉 おつかれさま"
       imagePath="/result/result1.png"
+      imageWidth={254}
+      imageHeight={204}
       message={`いろいろなおすすめ投稿を通じて、あなたは、さまざまな意見について、ふれて、考えれたと思います。
       
 でも、本当にそうなのでしょうか？`}

@@ -1,5 +1,6 @@
 import { Puddle } from "components/Puddle";
 import ResultFirst from "components/ResultFirst";
+import ResultSecond from "components/ResultSecond";
 import Head from "next/head";
 // import Image from "next/image";
 // import Link from "next/link";
@@ -30,8 +31,12 @@ export default function Result() {
       <header className="h-14 flex justify-center px-10">
         <Puddle className="" />
       </header>
-
-      <ResultFirst onClickNext={onClickNext} />
+      {resultStep == ResultStep.First && (
+        <ResultFirst onClickNext={onClickNext} />
+      )}
+      {resultStep == ResultStep.Third && (
+        <ResultSecond onClickNext={onClickNext} />
+      )}
     </div>
   );
 }
