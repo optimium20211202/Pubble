@@ -6,11 +6,16 @@
 type LabelType = 0 | 1;
 
 export interface TweetData {
-  id: string;
+  id: number;
   content: string;
   name: string;
   profilePicture: string;
   label: LabelType;
+}
+
+export interface GptOutputData {
+  Pros: string[];
+  Cons: string[];
 }
 
 export type Contents = [TweetData[], TweetData[]];

@@ -107,11 +107,15 @@ export default function Home() {
   };
 
   const generateContents = async () => {
+    const startTime = Date.now();
     const res = await fetch("/api/contents", {
       method: "POST",
       body: JSON.stringify({ theme: "テーマ" }),
     });
     const contents = (await res.json()) as TweetData[];
+
+    const endTime = Date.now();
+    console.log((endTime - startTime) / 1000);
     console.log(contents);
     setContentsState(contents);
     router.push("/game");
@@ -140,16 +144,16 @@ export default function Home() {
 
         {/* <div className="flex-grow" /> */}
 
-        <Link href="/game">
-          <button
-            className="roundButton fixed bottom-16 left-1/2 transform -translate-x-1/2"
-            onClick={() => {
-              generateContents();
-            }}
-          >
-            完了
-          </button>
-        </Link>
+        {/* <Link href="/game"> */}
+        <button
+          className="roundButton fixed bottom-16 left-1/2 transform -translate-x-1/2"
+          onClick={() => {
+            generateContents();
+          }}
+        >
+          完了
+        </button>
+        {/* </Link> */}
       </main>
 
       {/* <footer className="h-14 flex items-center justify-center px-10">
