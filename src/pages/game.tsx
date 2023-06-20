@@ -12,7 +12,7 @@ import Tutorial from "components/Tutorial";
 import { themeState } from "atoms/ThemeState";
 
 // 最低でもここの確率で反対意見が出るようにする
-const RANDOM_LIMIT = 0.2;
+const RANDOM_LIMIT = 0.0;
 
 // const isBlowser = typeof window !== "undefined";
 
@@ -161,6 +161,7 @@ export default function Game() {
       <main className="relative h-full flex flex-col mx-auto w-80 px-4">
         <div className="mt-10">
           <div className="text-left mb-2 text-sm font-bold">⚡️ トピック</div>
+          {/* TODO: 全文表示 */}
           <div className="text-xs font-bold bg-[#FFFFFF] text-[#444444] truncate p-2 rounded-3xl">
             {theme}
           </div>
