@@ -15,7 +15,7 @@ yarn install
 yarn dev
 ```
 
-browerで以下のurlにアクセスしてください。　　
+browerで以下のurlにアクセスしてください。  　　
 [http://localhost:3000](http://localhost:3000)
 
 ## ChatGPTについて
