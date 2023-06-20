@@ -37,6 +37,7 @@ const getUserMessage = (theme: string) => {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!process.env.CLOUD_RUN) {
     // vercelだと長時間のrequest対応できないのでmockデータを返す
+    // localでもmock使う。
     await setTimeout(5000);
     return res.status(200).json(sampleContents);
   }
