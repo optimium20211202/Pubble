@@ -68,7 +68,7 @@ const Theme = ({
   selectedTheme: string;
 }) => {
   return (
-    <div className="flex flex-col items-start mb-4">
+    <div className="flex flex-col items-start mb-4 w-80">
       <h2 className="text-left text-lg font-bold">{theme.genre}</h2>
       <div className="">
         {theme.topics.map((topic, index) => (
