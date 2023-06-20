@@ -7,6 +7,7 @@ import { useSetRecoilState } from "recoil";
 import { TweetData } from "types";
 import GifGame from "components/MiniGame";
 import { themeState } from "atoms/ThemeState";
+import toast from "react-hot-toast";
 
 type ThemeItem = {
   genre: string;
@@ -108,25 +109,37 @@ export default function Home() {
     console.log("generateContents");
     setIsLoading(true);
     const startTime = Date.now();
-    const res = await fetch("/api/contents", {
-      method: "POST",
-      body: JSON.stringify({ theme: theme }),
-    });
-    const contents = (await res.json()) as TweetData[];
-
-    const endTime = Date.now();
-    console.log((endTime - startTime) / 1000);
-    console.log(contents);
-    setContentsState(contents);
-    setThemeState(theme);
-    router.push("/game");
+    try {
+      const res = await fetch("/api/contents", {
+        method: "POST",
+        body: JSON.stringify({ theme: theme }),
+      });
+      if (res.ok) {
+        const contents = (await res.json()) as TweetData[];
+        setContentsState(contents);
+        setThemeState(theme);
+        router.push("/game");
+      } else {
+        toast.error("エラーが発生しました");
+        return;
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error("エラーが発生しました");
+      return;
+    } finally {
+      const endTime = Date.now();
+      console.log((endTime - startTime) / 1000);
+      setIsLoading(false);
+      setShowWaitingModal(false);
+    }
 
     // setShowWaitingModal(false);
   };
   return (
     <div className="min-h-screen flex flex-col bg-[#F5F5F5]">
       <Head>
-        <title>テーマ選択</title>
+        <title>トピック選択</title>
       </Head>
       <header className="h-14 flex justify-center px-10">
         <Puddle className="" />
@@ -164,6 +177,7 @@ export default function Home() {
           className="roundButton2 fixed bottom-16 left-1/2 transform -translate-x-1/2"
           onClick={() => {
             if (selectedTheme === "") {
+              toast.error("トピックを選択してください。");
               return;
             }
             generateContents(selectedTheme);
@@ -196,6 +210,7 @@ export default function Home() {
                   className="roundButton2"
                   onClick={() => {
                     if (inputTheme === "") {
+                      toast.error("トピックを入力してください。");
                       return;
                     }
                     generateContents(inputTheme);

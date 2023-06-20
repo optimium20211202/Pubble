@@ -177,7 +177,7 @@ function convertContents(
     .map((value) => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
-  console.log(result);
+  // console.log(result);
 
   return result;
 }

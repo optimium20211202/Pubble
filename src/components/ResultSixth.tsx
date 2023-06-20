@@ -18,7 +18,7 @@ const ResultFirst: React.FC<{
         全部で36種類。ぜひ集めてみてね！
       </div>
       <div
-        className="flex justify-center mt-10"
+        className="flex justify-center mt-8"
         style={{
           position: "relative",
           width: `366px`,

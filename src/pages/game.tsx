@@ -166,7 +166,7 @@ export default function Game() {
               {theme}
             </div>
           </div>
-          <div className="text-left mt-6 text-sm font-bold absolute_ top-24_">
+          <div className="text-left mt-6 text-sm font-bold">
             🚀 おすすめ投稿
           </div>
         </div>
