@@ -133,8 +133,6 @@ export default function Home() {
       setIsLoading(false);
       setShowWaitingModal(false);
     }
-
-    // setShowWaitingModal(false);
   };
   return (
     <div className="min-h-screen flex flex-col bg-[#F5F5F5]">

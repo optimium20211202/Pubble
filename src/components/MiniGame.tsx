@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const MiniGame: React.FC = () => {
   const [picNo, setPicNo] = useState(0);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((progress) => progress + 0.2);
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <dialog className="modal modal-open">
@@ -11,7 +19,12 @@ const MiniGame: React.FC = () => {
           🦖 コンテンツ準備中{" "}
           <div className="loading loading-spinner align-middle"></div>
         </div>
-        <div className="font-bold mt-8">
+        <progress
+          className="progress progress-success w-full mt-4"
+          value={progress}
+          max="100"
+        ></progress>
+        <div className="font-bold mt-4">
           待っている間にまちがい探し（６つの違い）をしてみましょう！
         </div>
         <div className="flex justify-center items-center mt-4">
