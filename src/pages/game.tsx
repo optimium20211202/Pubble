@@ -161,11 +161,12 @@ export default function Game() {
       <main className="relative h-full flex flex-col mx-auto w-80 px-4">
         <div className="mt-10">
           <div className="text-left mb-2 text-sm font-bold">⚡️ トピック</div>
-          {/* TODO: 全文表示 */}
-          <div className="text-xs font-bold bg-[#FFFFFF] text-[#444444] truncate p-2 rounded-3xl">
-            {theme}
+          <div className="h-10">
+            <div className="text-xs font-bold bg-[#FFFFFF] text-[#444444] p-2 rounded-3xl">
+              {theme}
+            </div>
           </div>
-          <div className="text-left mt-6 text-sm font-bold">
+          <div className="text-left mt-6 text-sm font-bold absolute_ top-24_">
             🚀 おすすめ投稿
           </div>
         </div>
