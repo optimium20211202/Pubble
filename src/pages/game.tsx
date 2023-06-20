@@ -9,6 +9,7 @@ import { TweetData } from "types";
 import router from "next/router";
 import { displayedIndexesState } from "atoms/DisplayedIndexesState";
 import Tutorial from "components/Tutorial";
+import { themeState } from "atoms/ThemeState";
 
 // 最低でもここの確率で反対意見が出るようにする
 const RANDOM_LIMIT = 0.2;
@@ -70,6 +71,7 @@ const getNextTargetCardItem = (
 
 export default function Game() {
   const contents = useRecoilValue(contentsState);
+  const theme = useRecoilValue(themeState);
   const setDisplayedIndexesState = useSetRecoilState(displayedIndexesState);
 
   const [currentIndex, setCurrentIndex] = useState(contents.length - 1);
@@ -154,15 +156,17 @@ export default function Game() {
         <title>フィルターバブル体験</title>
       </Head>
       {/* <header className="h-14 flex justify-center px-10">
-        <h1 className="text-2xl">PUBBLE</h1>
+        <Puddle className="" />
       </header> */}
       <main className="relative h-full flex flex-col mx-auto w-80 px-4">
         <div className="mt-10">
           <div className="text-left mb-2 text-sm font-bold">⚡️ トピック</div>
-          <div className="topic text-center" style={{ width: "100%" }}>
-            ジェンダー平等について
+          <div className="text-xs font-bold bg-[#FFFFFF] text-[#444444] truncate p-2 rounded-3xl">
+            {theme}
           </div>
-          <div className="text-left mt-6 text-sm font-bold">🚀 おすすめ</div>
+          <div className="text-left mt-6 text-sm font-bold">
+            🚀 おすすめ投稿
+          </div>
         </div>
         {contents.map(
           (content, index) => (

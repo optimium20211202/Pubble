@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { TweetData } from "types";
 import GifGame from "components/MiniGame";
+import { themeState } from "atoms/ThemeState";
 
 type ThemeItem = {
   genre: string;
@@ -91,6 +92,7 @@ const Theme = ({
 
 export default function Home() {
   const setContentsState = useSetRecoilState(contentsState);
+  const setThemeState = useSetRecoilState(themeState);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState("");
   const [inputTheme, setInputTheme] = useState("");
@@ -116,6 +118,7 @@ export default function Home() {
     console.log((endTime - startTime) / 1000);
     console.log(contents);
     setContentsState(contents);
+    setThemeState(theme);
     router.push("/game");
 
     // setShowWaitingModal(false);
