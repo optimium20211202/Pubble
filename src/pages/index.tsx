@@ -5,7 +5,7 @@ import router from "next/router";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { TweetData } from "types";
-import Image from "next/image";
+import GifGame from "components/MiniGame";
 
 type ThemeItem = {
   genre: string;
@@ -57,15 +57,6 @@ const themeItems: ThemeItem[] = [
   },
 ];
 
-const gifgameTexts = [
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-];
-
 const Theme = ({
   theme,
   onClickTheme,
@@ -86,7 +77,7 @@ const Theme = ({
               "btn btn-block text-xs text-left leading-5 mt-2 h-auto justify-start " +
               (selectedTheme === topic
                 ? "bg-[#4DABE0] text-white"
-                : "bg-[#FFFFFF]")
+                : "bg-[#FFFFFF] text-[#444444]")
             }
             onClick={() => onClickTheme(topic)}
           >
@@ -105,7 +96,6 @@ export default function Home() {
   const [inputTheme, setInputTheme] = useState("");
   const [showInputModal, setShowInputModal] = useState(false);
   const [showWatingModal, setShowWaitingModal] = useState(false);
-  const [gifgameNo, setGifgameNo] = useState(0);
 
   const onClickTheme = async (theme: string) => {
     setSelectedTheme(theme);
@@ -127,6 +117,8 @@ export default function Home() {
     console.log(contents);
     setContentsState(contents);
     router.push("/game");
+
+    // setShowWaitingModal(false);
   };
   return (
     <div className="min-h-screen flex flex-col bg-[#F5F5F5]">
@@ -223,43 +215,7 @@ export default function Home() {
           </dialog>
         )}
 
-        {showWatingModal && (
-          <dialog className="modal modal-open">
-            <form method="dialog" className="modal-box">
-              <div className="font-bold text-lg text-center">
-                🦖 コンテンツ準備中{" "}
-                <div className="loading loading-spinner align-middle"></div>
-              </div>
-              <div className="font-bold mt-4">
-                {gifgameTexts[gifgameNo]}タップでストップ！
-              </div>
-              <div className="flex justify-center items-center">
-                <Image
-                  src={`/gamegif/${gifgameNo + 1}.gif`}
-                  width={300}
-                  height={300}
-                  alt="game gif"
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-
-              <div className="text-center mt-4">
-                <button
-                  className="roundButton1"
-                  onClick={() => {
-                    if (gifgameNo === 5) {
-                      setGifgameNo(0);
-                      return;
-                    }
-                    setGifgameNo(gifgameNo + 1);
-                  }}
-                >
-                  別のゲーム
-                </button>
-              </div>
-            </form>
-          </dialog>
-        )}
+        {showWatingModal && <GifGame />}
       </main>
     </div>
   );

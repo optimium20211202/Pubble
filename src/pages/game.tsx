@@ -8,6 +8,7 @@ import { RefObject, createRef, useEffect, useMemo, useState } from "react";
 import { TweetData } from "types";
 import router from "next/router";
 import { displayedIndexesState } from "atoms/DisplayedIndexesState";
+import Tutorial from "components/Tutorial";
 
 // 最低でもここの確率で反対意見が出るようにする
 const RANDOM_LIMIT = 0.2;
@@ -78,6 +79,7 @@ export default function Game() {
   const canSwipe = currentIndex >= 0;
 
   const [score, setScore] = useState(0.5);
+  const [showTutorialModal, setShowTutorialModal] = useState(true);
 
   useEffect(() => {
     //  server side renderingだと初回のrender時にcontentsが空になるので
@@ -224,6 +226,13 @@ export default function Game() {
               </svg>
             </button>
           </div>
+        )}
+        {showTutorialModal && (
+          <Tutorial
+            onClickStart={() => {
+              setShowTutorialModal(false);
+            }}
+          />
         )}
       </main>
     </div>
