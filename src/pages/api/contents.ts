@@ -35,11 +35,11 @@ const getUserMessage = (theme: string) => {
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (!process.env.HEROKU) {
-    // vercelだと長時間のrequest対応できないのでmockデータを返す
-    await setTimeout(5000);
-    return res.status(200).json(sampleContents);
-  }
+  // if (!process.env.HEROKU) {
+  // vercelだと長時間のrequest対応できないのでmockデータを返す
+  await setTimeout(5000);
+  return res.status(200).json(sampleContents);
+  // }
 
   const theme = JSON.parse(req.body).theme;
 
