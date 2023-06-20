@@ -1,34 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
+## 起動方法
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
+yarn install
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# ChatGPTについて
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+System PromptとUser Promptを使ってトピックに対して2軸の文章を20個ずつ生成してJSON形式で出力させています。日本語のトピック入力に対してはほぼ100%指定したJSONフォーマットで出力させることに成功しています。
 
-## Learn More
+gpt4の方が精度が高く感情豊かな出力が得られますが、処理時間が倍以上かかるため、gpt3.5を使うことにしました。
 
-To learn more about Next.js, take a look at the following resources:
+それでも約40~50秒かかるため、間違い探しゲームを挟むことで子どもたちが退屈しないような工夫を入れています。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+実装箇所:
+https://github.com/optimium20211202/AI_Crypto_Hackathon/blob/254157e6882f9afa9481c32586d42a12e8d4a377/src/pages/api/contents.ts#L7
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+# コンテンツ表示ロジック
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2軸に分類されたコンテンツに対して、ユーザーの選択に応じて段々と表示が偏るようにしています。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+実装箇所:
+https://github.com/optimium20211202/AI_Crypto_Hackathon/blob/fd4830861da7959c03c7176927e158be7a340998/src/pages/game.tsx#L96
+
+# 実行環境
+
+実行環境はVercelとHerokuを検討しましたが、1分以上の処理はTimeoutになってしまう仕様のなので、長時間の処理が可能なGoogle Cloud Runを利用することにしました。
