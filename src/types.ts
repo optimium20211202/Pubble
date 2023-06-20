@@ -14,8 +14,8 @@ export interface TweetData {
 }
 
 export interface GptOutputData {
-  Pros: string[];
-  Cons: string[];
+  pros: string[];
+  cons: string[];
 }
 
 export type Contents = [TweetData[], TweetData[]];
