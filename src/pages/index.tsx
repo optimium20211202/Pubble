@@ -120,7 +120,9 @@ export default function Home() {
         setThemeState(theme);
         router.push("/game");
       } else {
-        toast.error("エラーが発生しました");
+        toast.error(
+          "エラーが発生しました。入力内容を変更して再度お試しください。"
+        );
         return;
       }
     } catch (e) {
