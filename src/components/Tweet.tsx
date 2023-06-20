@@ -33,7 +33,9 @@ const Tweet: React.FC<TweetProps> = ({ tweetData }) => {
             <span>
               <AiOutlineHeart />
             </span>
-            <span className="ml-2 text-sm">10</span>
+            <span className="ml-2 text-sm">
+              {Math.floor(Math.random() * (36 - 15)) + 15}
+            </span>
           </div>
         </div>
       </div>
