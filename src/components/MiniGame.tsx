@@ -1,25 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
-// import ReactFreezeframe from "react-freezeframe";
-// import { Freeze } from "freezeframe/types";
-// import dynamic from "next/dynamic";
-
-// // ssrだと機能しないので
-// const ReactFreezeframe = dynamic(() => import("react-freezeframe"), {
-//   ssr: false,
-// }) as any;
-
-const gifgameTexts = [
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-  "赤ちゃんを上手に起こしてあげよう！",
-];
 
 const MiniGame: React.FC = () => {
-  const [gifgameNo, setGifgameNo] = useState(0);
+  const [picNo, setPicNo] = useState(0);
 
   return (
     <dialog className="modal modal-open">
@@ -29,30 +12,40 @@ const MiniGame: React.FC = () => {
           <div className="loading loading-spinner align-middle"></div>
         </div>
         <div className="font-bold mt-8">
-          {gifgameTexts[gifgameNo]}タップでストップ！
+          待っている間にまちがい探し（６つの違い）をしてみましょう！
         </div>
         <div className="flex justify-center items-center mt-4">
           <Image
-            src={`/gamegif/${gifgameNo + 1}.gif`}
+            src={`/spot_the_difference/std${picNo + 1}.png`}
             width={300}
             height={300}
             alt="game gif"
             style={{ objectFit: "cover" }}
           />
         </div>
-
+        <div className="text-xs font-extralight text-center mt-2">
+          by{" "}
+          <a
+            className="link text-blue-600 dark:text-blue-500 hover:underline"
+            href="https://xn--fdk3a7ctb5192box5b.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            学習プリント.com
+          </a>
+        </div>
         <div className="text-center mt-6">
           <button
             className="roundButton1"
             onClick={() => {
-              if (gifgameNo === 5) {
-                setGifgameNo(0);
+              if (picNo === 3) {
+                setPicNo(0);
                 return;
               }
-              setGifgameNo(gifgameNo + 1);
+              setPicNo(picNo + 1);
             }}
           >
-            別のゲーム
+            別のまちがい探し
           </button>
         </div>
       </form>
