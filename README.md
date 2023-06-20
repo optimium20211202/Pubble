@@ -6,6 +6,13 @@ Puddle = みずたまり
 Bubble = フィルターバブル
 
 
+## tech stacks
+
+Next.js  
+Tailwind CSS  
+ChatGPT  
+Google Cloud Run  
+
 ## ローカル環境起動方法
 
 以下のコマンドを実行してdevelopment serverを起動します。
