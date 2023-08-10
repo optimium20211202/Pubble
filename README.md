@@ -1,98 +1,34 @@
-# Pubble
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Pubbleは、小学生を対象にSNSの利用によるフィルターバブルの危険性を認識してもらうための教育アプリです。
+## Getting Started
 
-Puddle = みずたまり  
-Bubble = フィルターバブル
-
-
-## tech stacks
-
-Next.js  
-Tailwind CSS  
-ChatGPT  
-Google Cloud Run  
-
-## ローカル環境起動方法
-
-以下のコマンドを実行してdevelopment serverを起動します。
+First, run the development server:
 
 ```bash
-yarn install
+npm run dev
+# or
 yarn dev
+# or
+pnpm dev
 ```
 
-browerで以下のurlにアクセスしてください。  　　
-[http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## ChatGPTについて
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-System PromptとUser Promptを使ってトピックに対して2軸の文章を20個ずつ生成してJSON形式で出力させています。日本語のトピック入力に対してはほぼ100%指定したJSONフォーマットで出力させることに成功しています。
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-gpt4の方が精度が高く感情豊かな出力が得られますが、処理時間が倍以上かかるため、gpt3.5を使うことにしました。
+## Learn More
 
-それでも約40~50秒かかるため、間違い探しゲームを挟むことで子どもたちが退屈しないような工夫を入れています。
+To learn more about Next.js, take a look at the following resources:
 
-実装箇所:
-https://github.com/optimium20211202/AI_Crypto_Hackathon/blob/254157e6882f9afa9481c32586d42a12e8d4a377/src/pages/api/contents.ts#L7
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## プロンプトの工夫点
-- System Prompt
-```
-これから以下の[## 制約条件]に厳密に従ってロールプレイを行ってください
-    
-## 制約条件
-最終的な出力は、以下のJSON形式で出力してください
-    
-## 出力フォーマット
-{"pros": [string, string, string,....], "cons": [string, string, string,...]}
-`
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-- User Prompt
-```
-以下の[# トピック]に関して、対立関係の主張を行うAチームとBチームに分かれてディベートするというロールプレイを行います。 
-以下の[# 出力フロー]に従って、実行してください。
-  
-# トピック
-「${topic}」
-  
-# 出力フロー
-1. [# トピック]に対するAチームの主張を、妄想や陰謀論、SF的な発想で理由を含めてMECEで20個列挙して、JSONの"pros" Keyの配列に格納してください
-2. [# トピック]に対するAチームと対立するBチームの主張を、Aチームとは別の妄想や陰謀論、SF的な発想で理由を含めてMECEで20個列挙して、JSONの"cons" Keyの配列に格納してください。
+## Deploy on Vercel
 
-```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-
-> 対立関係の主張を行うAチームとBチームに分かれてディベートするというロールプレイを行います`
-
-自由入力で、テーマを決めることができるように、どのような形でテーマを与えられても、対立した2視点からのコメントが出力できるようにしました。こうすることで、入力フォーマットを固定せずとも、一単語だけ入れただけでも二項対立を作ることができるようになりました。
-
-> [# トピック]に対するAチームの主張を、妄想や陰謀論、SF的な発想で理由を含めてMECEで20個列挙して
-
-子供たちが楽しめる自由なテーマでも対応できるように、妄想や陰謀論、SF的な発想という指示を飛ばしています。さらには、真面目なテーマを入れた場合でも、フェイクニュースのようなアウトプットを作ることもできます。MECEにすることで、同じようなアウトプットが出ることを防いでいます。
-
-
-> [# トピック]に対するAチームと対立するBチームの主張を、Aチームとは別の妄想や陰謀論、SF的な発想で理由を含めてMECEで20個列挙して
-
-Bチームの主張が、Aチームの意見に対する否定という形にならず、別の視点からAチームの意見に反論する主張となるように、Aチームとは別のと入れています。これを入れないと、ただAチームの主張を否定型にしたアウトプットが出てしまいます。
-
-
-> 　## 出力フォーマット {"pros": [string, string, string,....], "cons": [string, string, string,...]}
-
-出力結果をJSON形式で収めることで、その後、プログラムでパースしやすい形にしています。
-
-
-## コンテンツ表示ロジック
-
-2軸に分類されたコンテンツに対して、ユーザーの選択に応じて段々と表示が偏るようにしています。
-
-実装箇所:
-https://github.com/optimium20211202/AI_Crypto_Hackathon/blob/fd4830861da7959c03c7176927e158be7a340998/src/pages/game.tsx#L96
-
-## 実行環境
-
-実行環境はVercelとHerokuを検討しましたが、1分以上の処理はTimeoutになってしまう仕様のなので、長時間の処理が可能なGoogle Cloud Runを利用することにしました。
-
-こちらでdemoアプリを体験できます。  
-https://pubble-test-pj5eg7xjsa-an.a.run.app/
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

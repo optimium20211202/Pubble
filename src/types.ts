@@ -1,42 +1,29 @@
-// export interface Author {
-//   name: string;
-//   profilePicture: string;
-// }
+export type LabelType = 0 | 1;
 
-type LabelType = 0 | 1;
-
-export interface TweetData {
+export interface Content {
   id: number;
-  content: string;
-  name: string;
-  profilePicture: string;
+  text: string;
   label: LabelType;
 }
-
-export interface GptOutputData {
-  pros: string[];
-  cons: string[];
+export interface Topic {
+  id: number;
+  imagePath: string;
+  largeImagePath: string;
+  title: string;
+  text: string;
+  textShort: string;
+  unavailable?: boolean;
+  contents?: Content[];
+}
+export interface Tutorial {
+  id: number;
+  imagePath: string;
+  text: string;
 }
 
-export type Contents = [TweetData[], TweetData[]];
+export const MODE = {
+  SELECTION: "selection",
+  RECOMMENDATION: "recommendation",
+} as const;
 
-// export interface ReplyData {
-//   id: string;
-//   content: string;
-//   author: Author;
-// }
-
-export interface gptMessage {
-  role: "system" | "user" | "assistant";
-  content: string;
-}
-
-export enum ResultStep {
-  First,
-  Second,
-  Third,
-  Fourth1,
-  Fourth2,
-  Fifth,
-  Sixth,
-}
+export type Mode = (typeof MODE)[keyof typeof MODE];
