@@ -27,16 +27,16 @@ export default function TopPage() {
   }, []);
 
   return (
-    <main className="w-96 max-w-full pt-28 pb-16 mx-auto text-center flex flex-col items-center justify-start">
-      <PubbleLogo className="" width={150} height={60} />
-      <div className="mt-9 text-gray-base text-xl">
+    <main className="main-container">
+      <PubbleLogo className="mt-sm" width={150} height={60} />
+      <div className="mt-md text-gray-base text-xl">
         用途を説明するひとことコピーが入る
       </div>
       <div className="w-full">
-        <div className="w-fit mr-auto ml-4 mt-14 font-bold text-lg">
+        <div className="w-fit mr-auto mt-xl font-bold text-lg">
           🎨️ アイコン選択
         </div>
-        <div className="grid grid-cols-5 gap-4 place-items-center mx-2 mt-3">
+        <div className="grid grid-cols-5 gap-4 place-items-center mt-sm">
           {userIcons.map((icon, i) => (
             <Image
               key={i}
@@ -55,18 +55,16 @@ export default function TopPage() {
           ))}
         </div>
       </div>
-      <div className="w-full px-4 mt-8">
-        <div className="w-fit mr-auto font-bold text-lg">
-          🖋 ニックネーム記入
-        </div>
+      <div className="w-full">
+        <div className="w-fit mt-md font-bold text-lg">🖋 ニックネーム記入</div>
         <input
-          className="w-full h-10 mt-6 pl-3 rounded-xl shadow-base placeholder:font-bold placeholder:text-base"
+          className="w-full h-[2.625rem] mt-sm pl-xs rounded-xl shadow-base placeholder:font-bold placeholder:text-base"
           placeholder="好きなネームを入力してね"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
       </div>
-      <div className="w-full mt-20">
+      <div className="w-full mt-md text-center">
         <Link href="/selection/topics">
           <button
             className="w-60 h-12 bg-blue-base text-center text-white text-xl font-black rounded-4xl shadow-base tracking-[1rem] indent-[1rem] disabled:opacity-50 disabled:cursor-not-allowed"

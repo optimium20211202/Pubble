@@ -1,3 +1,12 @@
+const normalize = (remValue) => {
+  return remValue.toFixed(4).replace(/\.?0+$/, "");
+};
+const toRem = (value) => {
+  const px = parseInt(value);
+  const rem = px / 16;
+  return `${normalize(rem)}rem`;
+};
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -29,6 +38,13 @@ module.exports = {
       },
       borderWidth: {
         3: "3px",
+      },
+      spacing: {
+        xs: toRem("12px"),
+        sm: toRem("24px"),
+        md: toRem("36px"),
+        lg: toRem("48px"),
+        xl: toRem("60px"),
       },
     },
   },

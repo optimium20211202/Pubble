@@ -20,12 +20,12 @@ export const SelectionPost = ({
   userName,
 }: Props) => {
   return (
-    <div className="h-64 flex flex-col bg-white rounded-xl p-3 pb-6 ">
+    <div className="h-[17.25rem] flex flex-col bg-white rounded-xl p-xs pb-sm ">
       {!complete && <UserBadge userIcon={userIcon} userName={userName} />}
-      <div className="text-left mt-2">{complete ? "" : text}</div>
-      <div className="flex flex-row justify-center gap-2 mt-auto">
+      <div className="text-left mt-xs">{complete ? "" : text}</div>
+      <div className="flex flex-row justify-center gap-xs mt-auto">
         <button
-          className="w-40 h-12 flex items-center justify-center gap-2 bg-white border-red-base border-3 rounded-xl shadow-base text-red-base text-xl font-black"
+          className="w-40 h-12 flex items-center justify-center gap-xs bg-white border-red-base border-3 rounded-xl shadow-base text-red-base text-xl font-black"
           onClick={onClickLike}
           disabled={complete}
         >
@@ -33,7 +33,7 @@ export const SelectionPost = ({
           いいね
         </button>
         <button
-          className="w-40 h-12 flex items-center justify-center gap-2 bg-white border-tundora border-3 rounded-xl shadow-base text-tundora text-xl font-blacktext-xl font-black"
+          className="w-40 h-12 flex items-center justify-center gap-xs bg-white border-tundora border-3 rounded-xl shadow-base text-tundora text-xl font-blacktext-xl font-black"
           onClick={onClickSkip}
           disabled={complete}
         >

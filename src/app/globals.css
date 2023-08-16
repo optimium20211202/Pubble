@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .main-container {
+    @apply w-[390px] mx-auto px-xs py-sm flex flex-col items-center justify-center;
+  }
+}
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

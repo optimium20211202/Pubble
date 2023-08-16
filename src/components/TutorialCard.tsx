@@ -9,9 +9,9 @@ type Props = {
 
 export const TutorialCard = ({ imagePath, text }: Props) => {
   return (
-    <div className="p-3 pb-10 bg-white flex flex-col rounded-xl">
+    <div className="h-[24.75rem] p-xs bg-white flex flex-col rounded-xl">
       <Image src={imagePath} alt="tutorial image" width={342} height={192} />
-      <div className="mt-3 font-bold text-left text-lg text-gray-base leading-6">
+      <div className="mt-xs font-bold text-left text-lg text-gray-base leading-6">
         {text}
       </div>
     </div>

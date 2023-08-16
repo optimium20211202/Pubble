@@ -1,6 +1,5 @@
 import { getTopic } from "@/utils";
 import Image from "next/image";
-import Link from "next/link";
 
 type Props = {
   topicId: number;
@@ -19,7 +18,7 @@ export const TopicSummary = ({ topicId }: Props) => {
         width={366}
         height={206}
       />
-      <div className="mt-3 font-bold text-left text-sm text-gray-base leading-6">
+      <div className="mt-xs font-bold text-left text-sm text-gray-base leading-6">
         {textShort}
       </div>
     </div>

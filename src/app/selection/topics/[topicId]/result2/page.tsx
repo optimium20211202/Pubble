@@ -58,16 +58,16 @@ export default function Result2Page({ params }: Props) {
   // }
 
   return (
-    <main className="w-96 px-3 pb-16 max-w-full mx-auto text-center flex flex-col items-center justify-start">
-      <div className="w-full mt-6 flex flex-row justify-between">
+    <main className="main-container">
+      <div className="w-full flex flex-row justify-between">
         <UserBadgeWithUserInfo />
         <PubbleLogo className="" isColored width={90} height={36} />
       </div>
-      <div className="mr-auto mt-9 font-bold text-xl">
+      <div className="mr-auto mt-md font-bold text-xl">
         👀SNSコメント（{PLAY_CONTENTS_NUM}）
       </div>
 
-      <div className="mt-6 flex flex-col gap-3">
+      <div className="mt-sm flex flex-col gap-xs">
         {contents?.map((content) => {
           return (
             <TimelinePost
@@ -78,12 +78,12 @@ export default function Result2Page({ params }: Props) {
           );
         })}
       </div>
-      <Link className="mt-10" href={`/selection/topics/${topicId}/result3`}>
+      <Link className="mt-lg" href={`/selection/topics/${topicId}/result3`}>
         <button className="w-60 h-12 bg-blue-base text-center text-white text-xl font-black rounded-4xl shadow-base tracking-[1rem] indent-[1rem]">
           次へ
         </button>
       </Link>
-      <Link className="mt-6" href={`/selection/topics/${topicId}/result1`}>
+      <Link className="mt-sm" href={`/selection/topics/${topicId}/result1`}>
         <button className="w-60 h-12 text-center text-xl font-bold tracking-[1rem] indent-[1rem]">
           戻る
         </button>

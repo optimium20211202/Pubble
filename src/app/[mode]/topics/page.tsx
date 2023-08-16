@@ -16,8 +16,8 @@ export default function TopicsPage({ params: { mode } }: Props) {
   const topicIds = getTopicIds();
 
   return (
-    <main className="w-96 px-3 pb-16 max-w-full mx-auto text-center flex flex-col items-center justify-start">
-      <div className="w-full mt-6 flex flex-row justify-between">
+    <main className="main-container">
+      <div className="w-full flex flex-row justify-between">
         <UserBadgeWithUserInfo />
         <Link
           href={`/${
@@ -33,8 +33,8 @@ export default function TopicsPage({ params: { mode } }: Props) {
         </Link>
       </div>
 
-      <PubbleLogo className="mt-10" isColored width={150} height={60} />
-      <div className="mt-12 w-full flex flex-col gap-3">
+      <PubbleLogo className="mt-xl" isColored width={150} height={60} />
+      <div className="mt-lg w-full flex flex-col gap-xs">
         {topicIds.map((topicId) => (
           <TopicListItem
             key={topicId}

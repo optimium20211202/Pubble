@@ -20,7 +20,7 @@ export const TimelinePost = ({ content, userPreference }: Props) => {
   return (
     <div
       className={clsx(
-        "flex flex-col p-3 pb-6 bg-white border-3 rounded-xl",
+        "flex flex-col p-xs pb-sm bg-white border-3 rounded-xl",
         agree ? "border-red-base" : "border-green-base"
       )}
     >
@@ -35,7 +35,7 @@ export const TimelinePost = ({ content, userPreference }: Props) => {
           {supplement}
         </div>
       </div>
-      <div className="text-left mt-2">{content.text}</div>
+      <div className="text-left mt-xs">{content.text}</div>
     </div>
   );
 };
