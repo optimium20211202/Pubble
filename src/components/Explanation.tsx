@@ -16,7 +16,7 @@ export const Explanation = ({
   imageHeight,
 }: Props) => {
   return (
-    <div className="h-[30rem] p-xs flex flex-col rounded-xl items-center">
+    <div className="p-xs flex flex-col rounded-xl items-center">
       <Image
         src={imagePath}
         alt="Explanation image"
