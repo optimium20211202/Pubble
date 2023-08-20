@@ -1,6 +1,8 @@
 import { UserBadgeWithUserInfo } from "@/components/UserBadgWithUserInfo";
 import Link from "next/link";
 import Image from "next/image";
+import { HeartIcon } from "@heroicons/react/20/solid";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const GameRule2 = () => {
   return (
@@ -30,15 +32,25 @@ const GameRule2 = () => {
         style={{ paddingBottom: "52px" }}
       >
         <div
-          className="flex flex-col justify-items-center gap-6"
-          style={{ padding: "42px", backgroundColor: "#F0F0F0" }}
+          className="flex flex-col justify-items-center items-center gap-6"
+          style={{ padding: "42px", backgroundColor: "#F0F0F0"}}
         >
-          <div className="text-xl text-red-500 text-bold">
-            TODO: おすすめするのぼたん
-          </div>
-          <div className="text-xl text-red-500 text-bold">
-            TODO: すすめないのぼたん
-          </div>
+          <button
+            className="flex items-center justify-center gap-1 bg-white border-red-base border-3 rounded-xl shadow-base text-red-base text-xl font-black"
+            disabled={true}
+            style={{width:"168px", height:"42px"}}
+          >
+            <HeartIcon width="28px" height="26px" />
+            おすすめする
+          </button>
+          <button
+            className="flex items-center justify-center gap-1 bg-white border-tundora border-3 rounded-xl shadow-base text-tundora text-xl font-blacktext-xl font-black"
+            disabled={true}
+            style={{width:"168px", height:"42px"}}
+          >
+            <XMarkIcon width="28px" height="28px" className="stroke-[4px]"/>
+            すすめない
+          </button>
         </div>
         <div className="mt-3">
           <p className=" text-lg">
