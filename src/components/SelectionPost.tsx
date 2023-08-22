@@ -25,7 +25,7 @@ export const SelectionPost = ({
       <div className="text-left mt-xs">{complete ? "" : text}</div>
       <div className="flex flex-row justify-center gap-xs mt-auto">
         <button
-          className="w-40 h-12 flex items-center justify-center gap-xs bg-white border-red-base border-3 rounded-xl shadow-base text-red-base text-xl font-black"
+          className="w-40 h-12 flex items-center justify-center gap-xs bg-white border-red-base border-3 rounded-xl shadow-base text-red-base text-xl font-black active:bg-red-base active:text-white"
           onClick={onClickLike}
           disabled={complete}
         >
