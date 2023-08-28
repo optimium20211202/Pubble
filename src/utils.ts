@@ -1,4 +1,5 @@
 import { topicList } from "@/topics";
+import { topicListForRecomendation } from "@/topicsForRecomendation";
 
 export const getTopic = (topicId: number) => {
   return topicList.find((topic) => topic.id === topicId);
@@ -18,4 +19,18 @@ export const getPosAndNegContents = (topicId: number) => {
     contents?.filter((content) => content.label === 0),
     contents?.filter((content) => content.label === 1),
   ];
+};
+
+//以下レコメンドゲーム用
+export const getTopicForRecomendation = (topicId: number) => {
+  return topicListForRecomendation.find((topic) => topic.id === topicId);
+};
+
+export const getTopicIdsForRecomendation = () => {
+  return topicListForRecomendation.map((topic) => topic.id);
+};
+
+export const getContentsForRecomendation = (topicId: number) => {
+  return topicListForRecomendation.find((topic) => topic.id === topicId)
+    ?.contents;
 };
