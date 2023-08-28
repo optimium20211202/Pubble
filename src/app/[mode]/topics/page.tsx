@@ -14,15 +14,16 @@ type Props = {
 
 export default function TopicsPage({ params: { mode } }: Props) {
   const topicIds = getTopicIds();
+  // TODO: リンク先のIDは可変にしとく
+  const linkToTutorialId = 1
+  const linkToTopicId = 0
 
   return (
     <main className="main-container">
       <div className="w-full flex flex-row justify-between">
         <UserBadgeWithUserInfo />
         <Link
-          href={`/${
-            mode === MODE.SELECTION ? MODE.RECOMMENDATION : MODE.SELECTION
-          }/topics`}
+          href={`/recommendation/tutorials/${linkToTutorialId}/?topicId=${linkToTopicId}`}
         >
           <Image
             src="/mode_switch.svg"
