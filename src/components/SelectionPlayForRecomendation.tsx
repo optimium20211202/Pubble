@@ -43,7 +43,7 @@ export const SelectionPlay = ({ topicId }: Props) => {
 
   const [score, setScore] = useState(DEFAULT_SCORE);
 
-  const contents = getContentsForGame();
+  const [contents, setContents] = useState(getContentsForGame());
 
   const [content, setContent] = useState<RecomendContent>(contents[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,7 +53,13 @@ export const SelectionPlay = ({ topicId }: Props) => {
 
   const handleNextContent = (updatedScore: number) => {
     updateDisplayedContents(content.id);
-    setContent(contents[currentIndex + 1]);
+    const dummyContentIndex = Math.floor(Math.random() * (10 - currentIndex));
+    setContent(contents[dummyContentIndex]);
+    setContents(
+      contents.filter(
+        (content) => content.id !== contents[dummyContentIndex].id
+      )
+    );
     setCurrentIndex(currentIndex + 1);
     decrementCount();
     const dummyUserIndex = Math.floor(Math.random() * 15);
@@ -65,12 +71,14 @@ export const SelectionPlay = ({ topicId }: Props) => {
     const updatedScore = updateScore(true, score, content);
     setScore(updatedScore);
     console.log(updatedScore);
+    console.log(contents);
     handleNextContent(updatedScore);
   };
   const onClickSkip = () => {
     const updatedScore = updateScore(false, score, content);
     setScore(updatedScore);
     console.log(updatedScore);
+    console.log(contents);
     handleNextContent(updatedScore);
   };
 
