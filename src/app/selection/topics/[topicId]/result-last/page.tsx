@@ -1,4 +1,4 @@
-import { Explanation } from "@/components/Explanation";
+import { MyTimeline } from "@/components/MyTimeline";
 import { PubbleLogo } from "@/components/PubbleLogo";
 import { UserBadgeWithUserInfo } from "@/components/UserBadgWithUserInfo";
 import Link from "next/link";
@@ -22,6 +22,10 @@ export default function ResultLastPage({ params }: Props) {
         😃 ディスカッションタイム！
       </div>
       <div className="w-full h-[492px] mt-9 bg-white rounded-xl"></div>
+
+      <div className="mt-md">
+        <MyTimeline topicId={topicId} showPreference={true} />
+      </div>
       <Link className="mt-10" href={`/selection/topics`}>
         <button className="w-60 h-12 bg-white text-center text-xl font-black rounded-4xl shadow-base tracking-[0.05rem] indent-[0.05rem]">
           TOPへ戻る
