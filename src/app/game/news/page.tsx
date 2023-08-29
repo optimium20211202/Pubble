@@ -14,7 +14,7 @@ export default function RecommendationTopicPage({ params }: Props) {
   return (
     <main className="main-container">
       <div className="w-full flex flex-row justify-between">
-        <UserBadgeWithUserInfo />
+        <UserBadgeWithUserInfo mode="recommendation" />
       </div>
       <div className="flex justify-center mt-xl">
         <Image

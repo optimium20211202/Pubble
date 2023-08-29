@@ -15,15 +15,17 @@ type Props = {
 export default function TopicsPage({ params: { mode } }: Props) {
   const topicIds = getTopicIds();
   // TODO: リンク先のIDは可変にしとく
-  const linkToTutorialId = 1
-  const linkToTopicId = 0
+  const linkToTutorialId = 1;
+  const linkToTopicId = 0;
 
   return (
     <main className="main-container">
       <div className="w-full flex flex-row justify-between">
         <UserBadgeWithUserInfo />
         <Link
-          href={`/recommendation/tutorials/${linkToTutorialId}/?topicId=${linkToTopicId}`}
+          // href={`/recommendation/tutorials/${linkToTutorialId}/?topicId=${linkToTopicId}`}
+          // 一旦WS用のリンクに固定
+          href={`/game/top`}
         >
           <Image
             src="/mode_switch.svg"
@@ -40,9 +42,16 @@ export default function TopicsPage({ params: { mode } }: Props) {
           <TopicListItem
             key={topicId}
             topicId={topicId}
+            // linkPath={
+            //   mode === MODE.RECOMMENDATION
+            //     ? `/${mode}//tutorials/1?topicId=${topicId}`
+            //     : `/${mode}/topics/${topicId}`
+            // }
+
+            //WS用リンク
             linkPath={
               mode === MODE.RECOMMENDATION
-                ? `/${mode}//tutorials/1?topicId=${topicId}`
+                ? `/game/top`
                 : `/${mode}/topics/${topicId}`
             }
           />

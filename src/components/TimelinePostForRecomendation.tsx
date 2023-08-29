@@ -15,8 +15,7 @@ export const TimelinePost = ({ content, userPreference }: Props) => {
   return (
     <div
       className={clsx(
-        "flex flex-col p-xs pb-sm bg-white border-3 rounded-xl",
-        agree ? "border-red-base" : "border-green-base"
+        "flex flex-col p-xs pb-sm bg-white border-3 rounded-xl border-red-base"
       )}
     >
       <div className="flex justify-between items-center">
@@ -24,12 +23,7 @@ export const TimelinePost = ({ content, userPreference }: Props) => {
           userIcon={userIcons[content.id]}
           userName={userNames[content.id]}
         />
-        <div
-          className={clsx(
-            `text-sm font-black`,
-            agree ? "text-red-base" : "text-green-base"
-          )}
-        >
+        <div className={clsx(`text-sm font-black`, "text-red-base")}>
           {supplement}
         </div>
       </div>
