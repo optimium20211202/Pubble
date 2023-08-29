@@ -11,7 +11,7 @@ export default function Layout({ children }: Props) {
         <UserBadgeWithUserInfo mode="recommendation"/>
       </div>
       <PubbleLogo className="mt-xl" isColored width={150} height={60} />
-      <div className="mr-auto mt-md mx-auto font-bold text-xl">
+      <div className="mr-auto mt-md mx-auto font-bold text-xl text-defaultBg">
         🎮コメントおすすめゲーム
       </div>
       {children}
