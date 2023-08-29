@@ -10,7 +10,7 @@ const GameResult = () => {
   return (
     <>
       <div className="w-full flex flex-row justify-between">
-        <UserBadgeWithUserInfo />
+        <UserBadgeWithUserInfo mode="recommendation" />
       </div>
       <div className="flex justify-center mt-xl">
         <Image
@@ -40,10 +40,10 @@ const GameResult = () => {
         className="w-full flex flex-col gap-3 items-center"
         style={{ marginTop: "55px" }}
       >
-        <Link href="/game/top">
+        <Link href="../selection/topics">
           <button
             className="w-60 h-12 bg-white text-center text-xl font-black rounded-4xl shadow-base tracking-[1rem] indent-[1rem]"
-            style={{ color:"#888888", letterSpacing: "1px" }}
+            style={{ color: "#888888", letterSpacing: "1px" }}
           >
             終　了
           </button>
