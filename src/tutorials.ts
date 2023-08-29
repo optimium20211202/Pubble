@@ -3,8 +3,8 @@ import { Tutorial } from "./types";
 export const recommendationTutorials: Tutorial[] = [
   {
     id: 1,
-    imagePath: "/dummy_news_image.png",
-    text: "みなさんには他人に表示するコメントをおすすめするゲームをやってもらいます。これはポイントを競い合うゲームです。",
+    imagePath: "/game/result/image-fun.png",
+    text: "今からとある人へ対し、その人が好みそうなコメントをおすすめしてもらいます。\n好みのコメントを表示続けることで、その人がこのSNSに夢中になってもらうことが目的です。",
   },
   {
     id: 2,
