@@ -2,8 +2,13 @@
 import { useUserInfo } from "@/hooks/useUserInfo";
 import { UserBadge } from "./UserBadge";
 
-export const UserBadgeWithUserInfo = () => {
+// どこで使われてるかよく知らないので一旦オプショナル
+type Props = {
+  mode?: "selection" | "recommendation"
+}
+
+export const UserBadgeWithUserInfo = ({mode}: Props) => {
   const { userName, userIcon } = useUserInfo();
 
-  return <UserBadge userName={userName} userIcon={userIcon} />;
+  return <UserBadge userName={userName} userIcon={userIcon} mode={mode}/>;
 };

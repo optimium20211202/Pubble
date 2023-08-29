@@ -8,7 +8,7 @@ export default function Layout({ children }: Props) {
   return (
     <main className="main-container">
       <div className="w-full flex flex-row justify-between">
-        <UserBadgeWithUserInfo />
+        <UserBadgeWithUserInfo mode="recommendation"/>
       </div>
       <PubbleLogo className="mt-xl" isColored width={150} height={60} />
       <div className="mr-auto mt-md mx-auto font-bold text-xl">
