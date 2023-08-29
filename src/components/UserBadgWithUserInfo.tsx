@@ -4,11 +4,11 @@ import { UserBadge } from "./UserBadge";
 
 // どこで使われてるかよく知らないので一旦オプショナル
 type Props = {
-  mode?: "selection" | "recommendation"
-}
+  mode?: "selection" | "recommendation";
+};
 
-export const UserBadgeWithUserInfo = ({mode}: Props) => {
+export const UserBadgeWithUserInfo = ({ mode }: Props) => {
   const { userName, userIcon } = useUserInfo();
 
-  return <UserBadge userName={userName} userIcon={userIcon} mode={mode}/>;
+  return <UserBadge userName={userName} userIcon={userIcon} mode={mode} />;
 };
