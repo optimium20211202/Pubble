@@ -4,16 +4,10 @@ import { SelectionPost } from "./SelectionPosForRecomendation";
 import { PLAY_RECOMEND_CONTENTS_NUM } from "@/constants";
 import { useRouter } from "next/navigation";
 // import queryString from "query-string";
-import { getPosAndNegContents } from "@/utils";
-import {
-  Content,
-  RecomendationContentType,
-  RecomendContent,
-  ScoreType,
-} from "@/types";
+import { getContentsForGame } from "@/utils";
+import { RecomendContent } from "@/types";
 import { userIcons } from "@/userIcons";
 import { userNames } from "@/userNames";
-import { contentsListForRecommendations } from "@/topicsForRecomendation";
 
 // 初期点数
 const DEFAULT_SCORE = 36;
@@ -49,7 +43,7 @@ export const SelectionPlay = ({ topicId }: Props) => {
 
   const [score, setScore] = useState(DEFAULT_SCORE);
 
-  const contents = contentsListForRecommendations;
+  const contents = getContentsForGame();
 
   const [content, setContent] = useState<RecomendContent>(contents[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -70,11 +64,13 @@ export const SelectionPlay = ({ topicId }: Props) => {
   const onClickLike = () => {
     const updatedScore = updateScore(true, score, content);
     setScore(updatedScore);
+    console.log(updatedScore);
     handleNextContent(updatedScore);
   };
   const onClickSkip = () => {
     const updatedScore = updateScore(false, score, content);
     setScore(updatedScore);
+    console.log(updatedScore);
     handleNextContent(updatedScore);
   };
 
@@ -93,7 +89,7 @@ export const SelectionPlay = ({ topicId }: Props) => {
       </div>
       <div className="mt-6">
         <SelectionPost
-          text={content.text}
+          text={content?.text}
           complete={complete}
           onClickLike={onClickLike}
           onClickSkip={onClickSkip}

@@ -4,7 +4,7 @@ import Image from "next/image";
 type Props = {
   userName: string;
   userIcon: string;
-  mode?: "selection" | "recommendation"
+  mode?: "selection" | "recommendation";
 };
 export const UserBadge = ({ userName, userIcon, mode }: Props) => {
   return (
@@ -21,7 +21,9 @@ export const UserBadge = ({ userName, userIcon, mode }: Props) => {
         <div className="h-[36px] w-[36px] bg-gray-300 rounded-full"></div>
       )}
 
-      <div className={`pl-2 ${mode === "recommendation" ? "text-white" : ""}`}>{userName}</div>
+      <div className={`pl-2 ${mode === "recommendation" ? "text-white" : ""}`}>
+        {userName}
+      </div>
     </div>
   );
 };

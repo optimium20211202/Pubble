@@ -1,12 +1,12 @@
+"use client";
 import { UserBadgeWithUserInfo } from "@/components/UserBadgWithUserInfo";
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { useUserScore } from "@/hooks/useUserScore";
 
 const GameResult = () => {
-  // TODO: localstorageからスコア（SNS利用時間）を取得する処理の実装
-  const score = 70;
-
+  const score = useUserScore();
   return (
     <>
       <div className="w-full flex flex-row justify-between">
@@ -57,7 +57,7 @@ export default GameResult;
 
 // workshop用の実装なので一応コンポーネントとして切り出さずpagesに持たせておく。
 const ResultDetail = ({ score }: { score: number }): ReactNode => {
-  if (score < 0 || score > 80) {
+  if (score < 0 || score > 69) {
     console.error("スコア値が異常です");
     return;
   }
@@ -77,8 +77,8 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
     );
   }
 
-  // 21分〜40分の場合
-  if (score <= 40) {
+  // 21分〜36分の場合
+  if (score <= 36) {
     return (
       <div className="flex flex-col items-center gap-3">
         <Image
@@ -92,8 +92,8 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
     );
   }
 
-  // 41分〜60分の場合
-  if (score <= 60) {
+  // 37分〜52分の場合
+  if (score <= 52) {
     return (
       <div className="flex flex-col items-center gap-3">
         <Image
@@ -107,7 +107,7 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
     );
   }
 
-  // 61分〜80分の場合
+  // 53分〜68分の場合
   return (
     <div className="flex flex-col items-center gap-3">
       <Image
