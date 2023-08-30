@@ -33,34 +33,27 @@ type Props = {
 
 export const SelectionPlay = ({ topicId }: Props) => {
   const router = useRouter();
-  const displayedContents = useRef<number[]>([]);
   const [count, setCount] = useState(PLAY_RECOMEND_CONTENTS_NUM);
   const decrementCount = () => setCount((prev) => prev - 1);
   const complete = count < 1;
-  const updateDisplayedContents = (displayedContentId: number) => {
-    displayedContents.current.push(displayedContentId);
-  };
 
   const [score, setScore] = useState(DEFAULT_SCORE);
 
-  const [contents, setContents] = useState(getContentsForGame());
+  const [contents] = useState(getContentsForGame());
 
   const [content, setContent] = useState<RecomendContent>(contents[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [userIcon, setUserIcon] = useState(userIcons[0]);
+
   const [userName, setUserName] = useState(userNames[0]);
 
-  const handleNextContent = (updatedScore: number) => {
-    updateDisplayedContents(content.id);
-    const dummyContentIndex = Math.floor(Math.random() * (10 - currentIndex));
-    setContent(contents[dummyContentIndex]);
-    setContents(
-      contents.filter(
-        (content) => content.id !== contents[dummyContentIndex].id
-      )
-    );
-    setCurrentIndex(currentIndex + 1);
+  const handleNextContent = () => {
+    console.log(contents);
+    const targetIndex = currentIndex + 1;
+    setContent(contents[targetIndex]);
+
+    setCurrentIndex((currentIndex) => currentIndex + 1);
     decrementCount();
     const dummyUserIndex = Math.floor(Math.random() * 15);
     setUserIcon(userIcons[dummyUserIndex]);
@@ -70,16 +63,14 @@ export const SelectionPlay = ({ topicId }: Props) => {
   const onClickLike = () => {
     const updatedScore = updateScore(true, score, content);
     setScore(updatedScore);
+    handleNextContent();
     console.log(updatedScore);
-    console.log(contents);
-    handleNextContent(updatedScore);
   };
   const onClickSkip = () => {
     const updatedScore = updateScore(false, score, content);
     setScore(updatedScore);
+    handleNextContent();
     console.log(updatedScore);
-    console.log(contents);
-    handleNextContent(updatedScore);
   };
 
   useEffect(() => {
@@ -89,6 +80,8 @@ export const SelectionPlay = ({ topicId }: Props) => {
       router.push(`/game/result`);
     }
   }, [complete, router, score, topicId]);
+
+  console.log(content);
 
   return (
     <>

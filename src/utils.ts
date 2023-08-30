@@ -68,10 +68,26 @@ export const getContentsForGame = () => {
     2
   );
 
-  return strongSupportContent
-    .concat(weakSupportContent)
-    .concat(strongObjectionContent)
-    .concat(weakObjectionContent);
+  const shuffleContents = (contents: RecomendContent[]) => {
+    const cloneContents = [...contents];
+
+    for (let i = cloneContents.length - 1; i >= 0; i--) {
+      let rand = Math.floor(Math.random() * (i + 1));
+      // 配列の要素の順番を入れ替える
+      let tmpStorage = cloneContents[i];
+      cloneContents[i] = cloneContents[rand];
+      cloneContents[rand] = tmpStorage;
+    }
+
+    return cloneContents;
+  };
+
+  return shuffleContents(
+    strongSupportContent
+      .concat(weakSupportContent)
+      .concat(strongObjectionContent)
+      .concat(weakObjectionContent)
+  );
 };
 
 function getRandomGameContent(
