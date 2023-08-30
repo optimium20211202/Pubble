@@ -6,11 +6,9 @@ import { userNames } from "@/userNamesForRecomendation";
 
 type Props = {
   content: Content;
-  userPreference: number;
 };
 
-export const TimelinePost = ({ content, userPreference }: Props) => {
-  const agree = userPreference === content.label;
+export const TimelinePost = ({ content }: Props) => {
   const supplement = "この人がいいねした意見";
   return (
     <div

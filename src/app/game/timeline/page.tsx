@@ -15,26 +15,18 @@ type Props = {
 };
 export default function Result3Page({ params }: Props) {
   const topicId = Number(params.topicId);
-  // const preference = Number(searchParams.preference);
   const [contents, setContents] = useState<Content[]>();
-  const [preference, setPreference] = useState<number>(0);
 
   useEffect(() => {
     const contentIds = JSON.parse(
       localStorage.getItem("displayedContents") || "[]"
     ) as number[];
-    const _preference = localStorage.getItem("preference");
-    setPreference(Number(_preference));
-
-    if (!contentIds.length || !_preference) {
-      throw new Error("displayedContents or preference is null");
-    }
 
     const _contents = getContentsForRecomendation(0);
 
     console.log(_contents);
     setContents(_contents);
-  }, [preference, topicId]);
+  }, [topicId]);
 
   return (
     <main className="main-container">
@@ -57,13 +49,7 @@ text-white"
 
       <div className="mt-sm flex flex-col gap-xs">
         {contents?.map((content) => {
-          return (
-            <TimelinePost
-              key={content.id}
-              content={content}
-              userPreference={preference}
-            />
-          );
+          return <TimelinePost key={content.id} content={content} />;
         })}
       </div>
       <Link className="mt-lg" href={`/game/play`}>
