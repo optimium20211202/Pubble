@@ -31,7 +31,7 @@ export default function Result4Page({ params }: Props) {
           }
         />
       </div>
-      <Link className="mt-md" href={`/selection/topics/${topicId}/result-last`}>
+      <Link className="mt-md" href={`/selection/topics/${topicId}/result6`}>
         <button className="w-60 h-12 bg-blue-base text-center text-white text-xl font-black rounded-4xl shadow-base tracking-[1rem] indent-[1rem]">
           次へ
         </button>
