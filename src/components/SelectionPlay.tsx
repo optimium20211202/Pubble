@@ -5,7 +5,7 @@ import { PLAY_CONTENTS_NUM } from "@/constants";
 import { useRouter } from "next/navigation";
 // import queryString from "query-string";
 import { getPosAndNegContents } from "@/utils";
-import { Content } from "@/types";
+import { Content, Post } from "@/types";
 import { userIcons } from "@/userIcons";
 import { userNames } from "@/userNames";
 
@@ -29,11 +29,15 @@ type Props = {
 export const SelectionPlay = ({ topicId }: Props) => {
   const router = useRouter();
   const displayedContents = useRef<number[]>([]);
+  const displayedPosts = useRef<Post[]>([]);
   const [count, setCount] = useState(PLAY_CONTENTS_NUM);
   const decrementCount = () => setCount((prev) => prev - 1);
   const complete = count < 1;
   const updateDisplayedContents = (displayedContentId: number) => {
     displayedContents.current.push(displayedContentId);
+  };
+  const updateDisplayedPosts = (displayedPost: Post) => {
+    displayedPosts.current.push(displayedPost);
   };
 
   const [score, setScore] = useState(0.5);
@@ -57,6 +61,11 @@ export const SelectionPlay = ({ topicId }: Props) => {
 
   const handleNextContent = (updatedScore: number) => {
     updateDisplayedContents(content.id);
+    updateDisplayedPosts({
+      content: content,
+      userIcon: userIcon,
+      userName: userName,
+    } as Post);
     const targetLabel = updatedScore < Math.random() ? 0 : 1;
     if (targetLabel === 0) {
       const targetIndex = currentPosIndex + 1;
@@ -103,6 +112,12 @@ export const SelectionPlay = ({ topicId }: Props) => {
         "displayedContents",
         JSON.stringify(displayedContents.current)
       );
+
+      localStorage.setItem(
+        "displayedPosts",
+        JSON.stringify(displayedPosts.current)
+      );
+
       localStorage.setItem("preference", score > 0.5 ? "1" : "0");
       // router.push(
       //   `/selection/topics/${topicId}/result1/?${q}&preference=${
@@ -120,7 +135,7 @@ export const SelectionPlay = ({ topicId }: Props) => {
       </div>
       <div className="mt-6">
         <SelectionPost
-          text={content.text}
+          text={content?.text}
           complete={complete}
           onClickLike={onClickLike}
           onClickSkip={onClickSkip}

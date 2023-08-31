@@ -12,6 +12,12 @@ export interface Content {
   label: LabelType;
 }
 
+export interface Post {
+  content: Content;
+  userName: string;
+  userIcon: string;
+}
+
 export interface RecomendContent {
   id: number;
   text: string;

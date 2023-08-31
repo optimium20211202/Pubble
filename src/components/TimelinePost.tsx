@@ -8,10 +8,17 @@ import { userNames } from "@/userNames";
 type Props = {
   content: Content;
   userPreference: number;
+  userIcon: string;
+  useName: string;
 };
 
 // TODO: UserBadgeのicon & name
-export const TimelinePost = ({ content, userPreference }: Props) => {
+export const TimelinePost = ({
+  content,
+  userPreference,
+  userIcon,
+  useName,
+}: Props) => {
   const agree = userPreference === content.label;
   const supplement =
     userPreference === content.label
@@ -25,7 +32,7 @@ export const TimelinePost = ({ content, userPreference }: Props) => {
       )}
     >
       <div className="flex justify-between items-center">
-        <UserBadge userIcon={userIcons[0]} userName={userNames[0]} />
+        <UserBadge userIcon={userIcon} userName={useName} />
         <div
           className={clsx(
             `text-sm font-black`,
