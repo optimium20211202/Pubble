@@ -36,6 +36,7 @@ export const SelectionPlay = ({ topicId }: Props) => {
   const [count, setCount] = useState(PLAY_RECOMEND_CONTENTS_NUM);
   const decrementCount = () => setCount((prev) => prev - 1);
   const complete = count < 1;
+  console.log("count");
 
   const [score, setScore] = useState(DEFAULT_SCORE);
 
