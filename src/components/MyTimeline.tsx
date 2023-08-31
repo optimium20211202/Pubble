@@ -1,5 +1,5 @@
 "use client";
-import { Content } from "@/types";
+import { Content, Post } from "@/types";
 import { TimelinePost } from "./TimelinePost";
 import { useEffect, useState } from "react";
 import { getContents } from "@/utils";
@@ -10,12 +10,18 @@ type Props = {
 };
 export const MyTimeline = ({ topicId, showPreference = false }: Props) => {
   const [contents, setContents] = useState<Content[]>();
+  const [posts, setPosts] = useState<Post[]>();
   const [preference, setPreference] = useState<number>(0);
 
   useEffect(() => {
     const contentIds = JSON.parse(
       localStorage.getItem("displayedContents") || "[]"
     ) as number[];
+
+    const displayedPosts = JSON.parse(
+      localStorage.getItem("displayedPosts") || "[]"
+    ) as Post[];
+
     const _preference = localStorage.getItem("preference");
     setPreference(Number(_preference));
 
@@ -23,6 +29,9 @@ export const MyTimeline = ({ topicId, showPreference = false }: Props) => {
       throw new Error("displayedContents or preference is null");
     }
 
+    setPosts(displayedPosts);
+
+    console.log(displayedPosts);
     const _contents = getContents(topicId);
     const filteredContents = _contents
       ?.filter((content) => contentIds.includes(content.id))
@@ -40,12 +49,14 @@ export const MyTimeline = ({ topicId, showPreference = false }: Props) => {
           : `👀私のタイムライン（${PLAY_CONTENTS_NUM}）`}
       </div>
       <div className="mt-sm flex flex-col gap-xs">
-        {contents?.map((content) => {
+        {posts?.map((post) => {
           return (
             <TimelinePost
-              key={content.id}
-              content={content}
+              key={post.content.id}
+              content={post.content}
               userPreference={preference}
+              userIcon={post.userIcon}
+              useName={post.userName}
             />
           );
         })}
