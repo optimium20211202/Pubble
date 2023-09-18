@@ -3,7 +3,7 @@ import { Topic, RecomendContent } from "./types";
 export const topicListForRecomendation: Topic[] = [
   {
     id: 0,
-    imagePath: "/news2_image.png",
+    imagePath: "/news4_image.png",
     largeImagePath: "/news2_image_large.png",
     title: "【 AIに宿題をさせるべきか、させてはいけないのか 】",
     text: "夏休みの宿題にAIを使っている学生が増えているようだ。とある会社がじっしした調査によると、夏休みの宿題にAIを使用した小中高生は3人に1人。宿題に使った内容としては「作文」「数学」が上位にきていた。現在AIの使用にたいして、学校や親からの制限はまだ少ない。この状況を受け、AIに宿題をさせるべきか、それともさせてはいけないのか、今後考えていくべきと感じられる。",
