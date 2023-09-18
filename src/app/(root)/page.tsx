@@ -15,6 +15,8 @@ export default function TopPage() {
     localStorage.setItem("userIcon", userIcon);
   };
 
+  const topUserIcons = userIcons.slice(0, 15);
+
   const onClickIcon = (iconPath: string) => {
     setUserIcon(iconPath);
   };
@@ -37,7 +39,7 @@ export default function TopPage() {
           🎨️ アイコン選択
         </div>
         <div className="grid grid-cols-5 gap-4 place-items-center mt-sm">
-          {userIcons.map((icon, i) => (
+          {topUserIcons.map((icon, i) => (
             <Image
               key={i}
               className={clsx(

@@ -53,39 +53,36 @@ export const SelectionPlay = ({ topicId }: Props) => {
   }
 
   const [content, setContent] = useState<Content>(posContents[0]);
-  const [currentPosIndex, setCurrentPosIndex] = useState(1);
-  const [currentNegIndex, setCurrentNegIndex] = useState(0);
-
-  const [userIcon, setUserIcon] = useState(userIcons[0]);
-  const [userName, setUserName] = useState(userNames[0]);
 
   const handleNextContent = (updatedScore: number) => {
     updateDisplayedContents(content.id);
     updateDisplayedPosts({
       content: content,
-      userIcon: userIcon,
-      userName: userName,
+      userIcon: userIcons[content.userIconId],
+      userName: userNames[content.userNameId],
     } as Post);
+
+    if (content.id === 0) {
+      posContents.splice(0, 1);
+    }
+
     const targetLabel = updatedScore < Math.random() ? 0 : 1;
     if (targetLabel === 0) {
-      const targetIndex = currentPosIndex + 1;
+      const targetIndex = Math.floor(Math.random() * posContents.length);
       if (targetIndex >= posContents.length) {
         // TODO: error handling
       }
       setContent(posContents[targetIndex]);
-      setCurrentPosIndex(targetIndex);
+      posContents.splice(targetIndex, 1);
     } else {
-      const targetIndex = currentNegIndex + 1;
+      const targetIndex = Math.floor(Math.random() * negContents.length);
       if (targetIndex >= negContents.length) {
         // TODO: error handling
       }
       setContent(negContents[targetIndex]);
-      setCurrentNegIndex(targetIndex);
+      negContents.splice(targetIndex, 1);
     }
     decrementCount();
-    const dummyUserIndex = Math.floor(Math.random() * 15);
-    setUserIcon(userIcons[dummyUserIndex]);
-    setUserName(userNames[dummyUserIndex]);
   };
 
   const onClickLike = () => {
@@ -139,8 +136,8 @@ export const SelectionPlay = ({ topicId }: Props) => {
           complete={complete}
           onClickLike={onClickLike}
           onClickSkip={onClickSkip}
-          userIcon={userIcon}
-          userName={userName}
+          userIcon={userIcons[content.userIconId]}
+          userName={userNames[content.userNameId]}
         />
       </div>
     </>
