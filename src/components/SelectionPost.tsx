@@ -9,6 +9,7 @@ type Props = {
   onClickSkip: () => void;
   userIcon: string;
   userName: string;
+  likeCount: number;
 };
 
 export const SelectionPost = ({
@@ -18,11 +19,18 @@ export const SelectionPost = ({
   onClickSkip,
   userIcon,
   userName,
+  likeCount,
 }: Props) => {
   return (
     <div className="h-[17.25rem] flex flex-col bg-white rounded-xl p-xs pb-sm ">
       {!complete && <UserBadge userIcon={userIcon} userName={userName} />}
       <div className="text-left mt-xs">{complete ? "" : text}</div>
+      <div
+        className={`flex items-center space-x-2 px-2 py-1 bg-transparent outline-none ${"text-red-base"}`}
+      >
+        <HeartIcon className="h-5 w-5 pt-0.5" />
+        <span>{likeCount + " いいね"}</span>
+      </div>
       <div className="flex flex-row justify-center gap-xs mt-auto">
         <button
           className="w-40 h-12 flex items-center justify-center gap-xs bg-white border-red-base border-3 rounded-xl shadow-base text-red-base text-xl font-black active:bg-red-base active:text-white"
