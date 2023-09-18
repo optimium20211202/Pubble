@@ -34,7 +34,7 @@ export default function RecommendationTopicPage({ params }: Props) {
           </div>
           <Image
             className="flex-shrink-0 pt-xs"
-            src="/news2_image_large.png"
+            src="/news4_image.png"
             alt="news image"
             width={342}
             height={192}
