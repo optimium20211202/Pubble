@@ -5,11 +5,15 @@ export type RecomendationContentType =
   | "weakSupport"
   | "weakObjection"
   | "strongObjection";
+export type PowerFlug = true | false;
 
 export interface Content {
   id: number;
   text: string;
   label: LabelType;
+  powerFlug: PowerFlug;
+  userNameId: number;
+  userIconId: number;
 }
 
 export interface Post {
