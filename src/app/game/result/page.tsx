@@ -63,7 +63,7 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
   }
 
   // 0分〜20分の場合
-  if (score <= 21) {
+  if (score <= 20) {
     return (
       <div className="flex flex-col items-center gap-3">
         <Image
@@ -77,8 +77,8 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
     );
   }
 
-  // 21分〜36分の場合
-  if (score <= 36) {
+  // 20分〜39分の場合
+  if (score <= 39) {
     return (
       <div className="flex flex-col items-center gap-3">
         <Image
@@ -92,8 +92,8 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
     );
   }
 
-  // 37分〜51分の場合
-  if (score <= 51) {
+  // 40分〜59分の場合
+  if (score <= 59) {
     return (
       <div className="flex flex-col items-center gap-3">
         <Image
@@ -107,7 +107,7 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
     );
   }
 
-  // 52分〜66分の場合
+  // 60分〜68分の場合
   return (
     <div className="flex flex-col items-center gap-3">
       <Image
