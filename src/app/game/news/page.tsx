@@ -30,7 +30,7 @@ export default function RecommendationTopicPage({ params }: Props) {
       <div className="mt-sm">
         <div className="h-[32.25rem] p-xs bg-white flex flex-col rounded-xl">
           <div className="text-sm font-bold text-center">
-            【 AIは人の仕事を助けるのか、それとも奪うのか 】
+            【 AIに宿題をさせるべきか、させてはいけないのか 】
           </div>
           <Image
             className="flex-shrink-0 pt-xs"
@@ -40,7 +40,7 @@ export default function RecommendationTopicPage({ params }: Props) {
             height={192}
           />
           <div className="mt-xs font-bold text-left text-sm text-gray-base leading-6 whitespace-pre-wrap">
-            {`「Job総研」の調査により、多くの職業人がAIによる仕事の効率化を認識している一方で、AIによる仕事の奪取を懸念していることが明らかになりました。 \n\n特に若年層ではこの懸念が顕著で、AIの普及による影響が焦点となっています。AIの進化は社会に大きな影響を与えることは間違いありませんが、それが助けになるのか、それとも仕事を奪うのかはこれからの発展次第です。`}
+            {`夏休みの宿題にAIを使っている学生が増えているようだ。とある会社がじっしした調査によると、夏休みの宿題にAIを使用した小中高生は3人に1人。\n\n宿題に使った内容としては「作文」「数学」が上位にきていた。現在AIの使用にたいして、学校や親からの制限はまだ少ない。この状況を受け、AIに宿題をさせるべきか、それともさせてはいけないのか、今後考えていくべきと感じられる。`}
           </div>
         </div>
       </div>

@@ -33,12 +33,12 @@ export const SelectionPost = ({
           おすすめする
         </button>
         <button
-          className="w-40 h-12 flex items-center justify-center gap-xs bg-white border-tundora border-3 rounded-xl shadow-base text-tundora text-xl font-blacktext-xl font-black"
+          className="w-40 h-12 flex items-center justify-center gap-xs bg-white border-tundora border-3 rounded-xl shadow-base text-tundora text-l font-blacktext-xl font-black"
           onClick={onClickSkip}
           disabled={complete}
         >
           <XMarkIcon className="h-5 w-5 stroke-[4px] pt-0.5" />
-          すすめない
+          おすすめしない
         </button>
       </div>
     </div>
