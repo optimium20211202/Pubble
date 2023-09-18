@@ -6,7 +6,7 @@ export const userIcons = [
   "/userIconsForContent/Profile_5.png",
   "/userIconsForContent/Profile_6.png",
   "/userIconsForContent/Profile_7.png",
-  "/userIconsForContent/Profile_11.png",
+  "/userIconsForContent/Profile_16.png",
   "/userIconsForContent/Profile_9.png",
   "/userIconsForContent/Profile_10.png",
   "/userIconsForContent/Profile_11.png",
