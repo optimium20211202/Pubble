@@ -57,6 +57,7 @@ export const MyTimeline = ({ topicId, showPreference = false }: Props) => {
               userPreference={preference}
               userIcon={post.userIcon}
               useName={post.userName}
+              likeCount={post.content.likeCount}
             />
           );
         })}

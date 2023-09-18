@@ -138,6 +138,7 @@ export const SelectionPlay = ({ topicId }: Props) => {
           onClickSkip={onClickSkip}
           userIcon={userIcons[content.userIconId]}
           userName={userNames[content.userNameId]}
+          likeCount={content.likeCount}
         />
       </div>
     </>

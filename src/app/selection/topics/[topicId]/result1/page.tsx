@@ -33,12 +33,12 @@ Props) {
           imagePath="/result/result1.png"
           imageHeight={204}
           imageWidth={254}
-          text={`いろいろなコメントを通じて、あなたは、さまざまな意見について、ふれて、考えれたと思います。\n\nでも、本当にそうなのでしょうか？`}
+          text={`いろいろなコメントを通じて、あなたは、さまざまな意見について、ふれて、考えられたと思います。\n\n他の人のタイムラインには、どのようなコメントが流れていたのでしょうか？`}
         />
       </div>
-      <Link className="mt-sm" href={`/selection/topics/${topicId}/result2`}>
+      <Link className="mt-sm" href={`/selection/topics/${topicId}/result6`}>
         <button className="w-60 h-12 bg-blue-base text-center text-white text-xl font-black rounded-4xl shadow-base tracking-[0.05rem] indent-[0.05rem]">
-          どういうこと？
+          次へ
         </button>
       </Link>
     </main>
