@@ -62,8 +62,8 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
     return;
   }
 
-  // 0分〜20分の場合
-  if (score <= 20) {
+  // 0分〜19分の場合
+  if (0 < score && score <= 19) {
     return (
       <div className="flex flex-col items-center gap-3">
         <Image
@@ -78,7 +78,7 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
   }
 
   // 20分〜39分の場合
-  if (score <= 39) {
+  if (19 < score && score <= 39) {
     return (
       <div className="flex flex-col items-center gap-3">
         <Image
@@ -93,7 +93,7 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
   }
 
   // 40分〜59分の場合
-  if (score <= 59) {
+  if (39 < score && score <= 59) {
     return (
       <div className="flex flex-col items-center gap-3">
         <Image
