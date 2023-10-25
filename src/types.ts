@@ -33,6 +33,8 @@ export interface Topic {
   id: number;
   imagePath: string;
   largeImagePath: string;
+  positiveTendencyText?: string;
+  negativeTendencyText?: string;
   title: string;
   text: string;
   textShort: string;

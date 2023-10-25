@@ -17,6 +17,14 @@ export const getContents = (topicId: number) => {
   return topicList.find((topic) => topic.id === topicId)?.contents;
 };
 
+export const getPositiveTendencyText = (topicId: number) => {
+  return topicList.find((topic) => topic.id === topicId)?.positiveTendencyText;
+};
+
+export const getNegativeTendencyText = (topicId: number) => {
+  return topicList.find((topic) => topic.id === topicId)?.negativeTendencyText;
+};
+
 export const getPosAndNegContents = (topicId: number) => {
   const contents = getContents(topicId);
   return [
