@@ -2,7 +2,11 @@
 import { Content, Post } from "@/types";
 import { TimelinePost } from "./TimelinePost";
 import { useEffect, useState } from "react";
-import { getContents } from "@/utils";
+import {
+  getContents,
+  getPositiveTendencyText,
+  getNegativeTendencyText,
+} from "@/utils";
 import { PLAY_CONTENTS_NUM } from "@/constants";
 type Props = {
   topicId: number;
@@ -44,7 +48,9 @@ export const MyTimeline = ({ topicId, showPreference = false }: Props) => {
       <div className="text-left font-bold text-xl">
         {showPreference
           ? `👀私の傾向：【${
-              preference ? "動物園は廃止すべき" : "動物園はあるべき"
+              preference
+                ? getPositiveTendencyText(topicId)
+                : getNegativeTendencyText(topicId)
             }】`
           : `👀私のタイムライン（${PLAY_CONTENTS_NUM}）`}
       </div>

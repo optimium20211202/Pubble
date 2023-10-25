@@ -5,6 +5,8 @@ export const topicList: Topic[] = [
     id: 0,
     imagePath: "/recommendation_news_small_image.png",
     largeImagePath: "/recommendation_news_image.png",
+    positiveTendencyText: "動物園は廃止すべき",
+    negativeTendencyText: "動物園はあるべき",
     title: "【 動物園はあるべきか、それともはいしするべきか 】",
     text: "日本は動物園大国ですが、その存在については賛否がわかれています。一部では、おりにとじこめられた動物たちがかわいそうだと感じ、おりにとじこめられた動物たちのつらさを問いかける意見があります。\n\nしかし、こども時代に生き物を動物園で直接みた感動や、動物園におけるきしょう動物の保存などのやくわりをひょうかする声も多くあります。今こそ、動物園の新たなかたちをもさくするべきです。",
     textShort:
@@ -374,6 +376,380 @@ export const topicList: Topic[] = [
   },
   {
     id: 1,
+    imagePath: "/news5_image.png",
+    largeImagePath: "/news5_image_large.png",
+    positiveTendencyText: "イスラエル支持",
+    negativeTendencyText: "ハマス支持",
+    title: "【ハマスとイスラエルの衝突 】",
+    text: "2023年10月7日、パレスチナの武装組織ハマスはイスラエルをロケット攻撃し、さらに民間人を対象としたテロ行為も実行しました。これに対して、イスラエルはパレスチナのガザ地区に反撃を行い、この攻撃でガザの多くの民間人が犠牲となりました。\n\nハマスとイスラエルの対立は長い歴史を有し、和平への取り組みは未だ難航を続けています。この深刻な対立はSNSを通じて速やかに世界へ拡散され、多くの国々で両意見の衝突が起きています。",
+    textShort:
+      "ハマスとイスラエルの対立は長い歴史を有し、和平への取り組みは未だ難航を続けている。",
+    contents: [
+      {
+        id: 0,
+        text: "イスラエルの占領に立ち向かう勇気を持っているのは、ハマスだけです。",
+        label: 0,
+
+        userNameId: 0,
+        userIconId: 0,
+        likeCount: 30,
+      },
+      {
+        id: 1,
+        text: "ハマスの戦士たちは、パレスチナ人の自由と正義のために戦っているんだよ。",
+        label: 0,
+
+        userNameId: 1,
+        userIconId: 1,
+        likeCount: 16,
+      },
+      {
+        id: 2,
+        text: "ハマスの反撃は避けられなかった。何十年もの間、彼らはイスラエルに抑圧されてきました。",
+        label: 0,
+
+        userNameId: 2,
+        userIconId: 2,
+        likeCount: 1,
+      },
+      {
+        id: 3,
+        text: "パレスチナ人は、いつまでイスラエルの抑圧に耐えなければならないんだ？",
+        label: 0,
+
+        userNameId: 3,
+        userIconId: 3,
+        likeCount: 47,
+      },
+      {
+        id: 4,
+        text: "パレスチナの人々は、毎日地獄の中に生きてる。イスラエルの攻撃は人道に反する行為。",
+        label: 0,
+
+        userNameId: 4,
+        userIconId: 4,
+        likeCount: 42,
+      },
+      {
+        id: 5,
+        text: "ガザ地区の閉鎖は、パレスチナ人の人権を奪っています。イスラエルは今すぐパレスチナ人に対する抑圧をやめるべきです。",
+        label: 0,
+
+        userNameId: 5,
+        userIconId: 5,
+        likeCount: 10,
+      },
+      {
+        id: 6,
+        text: "何十年もの間、イスラエルの体系的な抑圧が続いていました。パレスチナ人は自由と正義を求めて戦っているだけです。",
+        label: 0,
+
+        userNameId: 6,
+        userIconId: 6,
+        likeCount: 45,
+      },
+      {
+        id: 7,
+        text: "ハマスはパレスチナの希望であり、イスラエルの残酷な占領に立ち向かう勇者ではないか。",
+        label: 0,
+
+        userNameId: 7,
+        userIconId: 7,
+        likeCount: 1,
+      },
+      {
+        id: 8,
+        text: "イスラエルの空爆は心をえぐる。無実の命が奪われ、家族が破壊されている。",
+        label: 0,
+
+        userNameId: 8,
+        userIconId: 8,
+        likeCount: 37,
+      },
+      {
+        id: 9,
+        text: "ハマスはイスラエルへの抵抗の象徴で、パレスチナ人の声を世界に届けていると考えてるけど。",
+        label: 0,
+
+        userNameId: 9,
+        userIconId: 9,
+        likeCount: 42,
+      },
+      {
+        id: 10,
+        text: "イスラエルがパレスチナ人の基本的人権を無視しているのはどうなんだ。",
+        label: 0,
+
+        userNameId: 10,
+        userIconId: 10,
+        likeCount: 17,
+      },
+      {
+        id: 11,
+        text: "イスラエルがパレスチナに対して行った空爆は、無実の子供たちが犠牲になった！とても残忍だ！",
+        label: 0,
+
+        userNameId: 11,
+        userIconId: 11,
+        likeCount: 33,
+      },
+      {
+        id: 12,
+        text: "イスラエルの占領と抑圧に対して、ハマスの行動は変化を求めいるんです。",
+        label: 0,
+
+        userNameId: 12,
+        userIconId: 12,
+        likeCount: 2,
+      },
+      {
+        id: 13,
+        text: "イスラエルの政策は人道に反し、ハマスはパレスチナ人の生きる未来を守るために戦っています。",
+        label: 0,
+
+        userNameId: 13,
+        userIconId: 13,
+        likeCount: 20,
+      },
+      {
+        id: 14,
+        text: "正直、ハマスが行動しなければ、これまでのパレスチナ人の声は世界に届かなかったのでは？",
+        label: 0,
+
+        userNameId: 14,
+        userIconId: 14,
+        likeCount: 25,
+      },
+      {
+        id: 15,
+        text: "今現在、イスラエルの圧政に立ち向かうことができるのはハマスだけです。これはとても重要です。",
+        label: 0,
+
+        userNameId: 15,
+        userIconId: 15,
+        likeCount: 5685,
+      },
+      {
+        id: 16,
+        text: "ハマスは、今まさに、イスラエルの無慈悲な占領に終止符を打とうとしている。",
+        label: 0,
+
+        userNameId: 16,
+        userIconId: 16,
+        likeCount: 5491,
+      },
+      {
+        id: 17,
+        text: "イスラエルの占領は元々生活していたパレスチナ人の生活を破壊しているんだぞ！",
+        label: 0,
+
+        userNameId: 17,
+        userIconId: 17,
+        likeCount: 8846,
+      },
+      {
+        id: 18,
+        text: "オスロ合意以降によるイスラエル側の長年の抑圧に対して、ハマスの行動は実際にパレスチナ人の声を世界に届けるシグナルとなりました。",
+        label: 0,
+
+        userNameId: 40,
+        userIconId: 18,
+        likeCount: 5883,
+      },
+      {
+        id: 19,
+        text: "1993年から何十年もの間、ガザ地区は刑務所のようなものでした。そこで生まれ育った人たちとして、ハマスは立ち向かっています。",
+        label: 0,
+
+        userNameId: 41,
+        userIconId: 19,
+        likeCount: 7776,
+      },
+      {
+        id: 20,
+        text: "イスラエルが自衛のために反撃するのは当然。どこの国でも同じことをするでしょ。",
+        label: 1,
+
+        userNameId: 20,
+        userIconId: 20,
+        likeCount: 49,
+      },
+      {
+        id: 21,
+        text: "色々な国がイスラエルを支持しています。よく考えてください、イスラエル人たちはただ自国を守りたいだけなんだ。",
+        label: 1,
+
+        userNameId: 21,
+        userIconId: 21,
+        likeCount: 7,
+      },
+      {
+        id: 22,
+        text: "ハマスの暴力は許容されない。この恐ろしいテロはただの無意味な暴力じゃないか！",
+        label: 1,
+
+        userNameId: 22,
+        userIconId: 22,
+        likeCount: 32,
+      },
+      {
+        id: 23,
+        text: "ハマスのテロ行為は国際社会によって非難されている。この暴力は止めなければならないのです。",
+        label: 1,
+
+        userNameId: 23,
+        userIconId: 23,
+        likeCount: 39,
+      },
+      {
+        id: 24,
+        text: "ハマス側の攻撃は戦争犯罪として調査されるべき。何が正義で何が犯罪かはっきりさせないと。",
+        label: 1,
+
+        userNameId: 24,
+        userIconId: 24,
+        likeCount: 23,
+      },
+      {
+        id: 25,
+        text: "イスラエルにいる無実の子供たちが犠牲になってるのを見て、怒りを感じる。これが何の正義なんだ？教えてくれ。",
+        label: 1,
+
+        userNameId: 25,
+        userIconId: 25,
+        likeCount: 3,
+      },
+      {
+        id: 26,
+        text: "ハマスの戦闘員は民間人を選んで攻撃しています。これは絶対に、いかなる場合でも許されない行動です。",
+        label: 1,
+
+        userNameId: 26,
+        userIconId: 26,
+        likeCount: 43,
+      },
+      {
+        id: 27,
+        text: "イスラエルは自国の安全と市民を守るために行動しています。それは当然の権利です。",
+        label: 1,
+
+        userNameId: 27,
+        userIconId: 27,
+        likeCount: 18,
+      },
+      {
+        id: 28,
+        text: "世界中の多くの国がイスラエルの自衛権を認めている。これは無視できない事実ではないか？",
+        label: 1,
+
+        userNameId: 28,
+        userIconId: 28,
+        likeCount: 12,
+      },
+      {
+        id: 29,
+        text: "ハマスがもたらす暴力は、そもそもパレスチナの人々にも苦痛をもたらしていますよ。",
+        label: 1,
+
+        userNameId: 29,
+        userIconId: 29,
+        likeCount: 23,
+      },
+      {
+        id: 30,
+        text: "10月7日のハマスの攻撃は戦争犯罪の範疇に入る。これに対する国際的な非難は当然じゃないか。",
+        label: 1,
+
+        userNameId: 30,
+        userIconId: 30,
+        likeCount: 20,
+      },
+      {
+        id: 31,
+        text: "ハマスのテロ行為は非人道的で、無差別に市民を攻撃している。許してはいけない。",
+        label: 1,
+
+        userNameId: 31,
+        userIconId: 31,
+        likeCount: 7,
+      },
+      {
+        id: 32,
+        text: "イスラエルはハマスの攻撃に対する防御措置を講じているだけでしょ？",
+        label: 1,
+
+        userNameId: 32,
+        userIconId: 32,
+        likeCount: 37,
+      },
+      {
+        id: 33,
+        text: "暴力は解決の道をさらに遠ざけている。平和を真剣に考えるなら、ハマスのテロは止めなければならない。",
+        label: 1,
+
+        userNameId: 33,
+        userIconId: 33,
+        likeCount: 31,
+      },
+      {
+        id: 34,
+        text: "ハマスの行動は国際法を無視しており、イスラエルはそれに対して自衛する権利があると思うけど。",
+        label: 1,
+
+        userNameId: 34,
+        userIconId: 34,
+        likeCount: 2,
+      },
+      {
+        id: 35,
+        text: "ハマスの行動は国際法を無視しており、イスラエルはそれに対して自衛する権利があると思うけど。",
+        label: 1,
+
+        userNameId: 35,
+        userIconId: 35,
+        likeCount: 6561,
+      },
+      {
+        id: 36,
+        text: "イスラエルは民主主義国家で、国際社会と協力してテロと戦っています。",
+        label: 1,
+
+        userNameId: 36,
+        userIconId: 36,
+        likeCount: 9743,
+      },
+      {
+        id: 37,
+        text: "ハマスのようなテロ団体が存在する限り、中東地域の平和は実現できません。",
+        label: 1,
+
+        userNameId: 37,
+        userIconId: 37,
+        likeCount: 9641,
+      },
+      {
+        id: 38,
+        text: "ハマスはパレスチナ自治政府を代表するものではありません。彼らはただのテロリスト団体です。彼らの行動は平和な解決をさらに困難にしていると考えて良いでしょう。",
+        label: 1,
+
+        userNameId: 42,
+        userIconId: 38,
+        likeCount: 5409,
+      },
+      {
+        id: 39,
+        text: "10月7日にハマスが行ったミサイルの飽和攻撃から、地上部隊による民間人の虐殺まで。これら全てテロ行為です。",
+        label: 1,
+
+        userNameId: 43,
+        userIconId: 39,
+        likeCount: 8013,
+      },
+    ],
+    unavailable: false,
+  },
+  {
+    id: 2,
     imagePath: "/news2_image.png",
     largeImagePath: "/news2_image_large.png",
     title: "【 AIは人の仕事を助けるのか、それとも奪うのか 】",
@@ -412,7 +788,7 @@ export const topicList: Topic[] = [
     unavailable: true,
   },
   {
-    id: 2,
+    id: 3,
     imagePath: "/news3_image.png",
     largeImagePath: "/dummy_news_image_large.png",
     title: "【 タイムマシーンで、未来にいくべき、それとも過去に戻るべきか 】",
