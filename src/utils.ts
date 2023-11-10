@@ -25,6 +25,48 @@ export const getNegativeTendencyText = (topicId: number) => {
   return topicList.find((topic) => topic.id === topicId)?.negativeTendencyText;
 };
 
+export const getTendencyText = (
+  topicId: number,
+  preference: number,
+  language: string
+) => {
+  if (language === "EN") {
+    if (preference) {
+      return (
+        `👀My tendency：\n` +
+        "【" +
+        topicList.find((topic) => topic.id === topicId)
+          ?.englishPositiveTendencyText +
+        "】"
+      );
+    } else {
+      return (
+        `👀My tendency：\n` +
+        "【" +
+        topicList.find((topic) => topic.id === topicId)
+          ?.englishNegativeTendencyText +
+        "】"
+      );
+    }
+  } else {
+    if (preference) {
+      return (
+        `👀私の傾向：\n` +
+        "【" +
+        topicList.find((topic) => topic.id === topicId)?.positiveTendencyText +
+        "】"
+      );
+    } else {
+      return (
+        `👀私の傾向：\n` +
+        "【" +
+        topicList.find((topic) => topic.id === topicId)?.negativeTendencyText +
+        "】"
+      );
+    }
+  }
+};
+
 export const getPosAndNegContents = (topicId: number) => {
   const contents = getContents(topicId);
   return [

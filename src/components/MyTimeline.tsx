@@ -2,11 +2,7 @@
 import { Content, Post } from "@/types";
 import { TimelinePost } from "./TimelinePost";
 import { useEffect, useState } from "react";
-import {
-  getContents,
-  getPositiveTendencyText,
-  getNegativeTendencyText,
-} from "@/utils";
+import { getContents, getTendencyText } from "@/utils";
 import { PLAY_CONTENTS_NUM } from "@/constants";
 type Props = {
   topicId: number;
@@ -16,11 +12,15 @@ export const MyTimeline = ({ topicId, showPreference = false }: Props) => {
   const [contents, setContents] = useState<Content[]>();
   const [posts, setPosts] = useState<Post[]>();
   const [preference, setPreference] = useState<number>(0);
+  const [language, setLanguage] = useState(""); // 言語設定を保存するための状態
 
   useEffect(() => {
     const contentIds = JSON.parse(
       localStorage.getItem("displayedContents") || "[]"
     ) as number[];
+
+    const storedLanguage = localStorage.getItem("language") || "";
+    setLanguage(storedLanguage);
 
     const displayedPosts = JSON.parse(
       localStorage.getItem("displayedPosts") || "[]"
@@ -47,11 +47,7 @@ export const MyTimeline = ({ topicId, showPreference = false }: Props) => {
     <>
       <div className="text-left font-bold text-xl">
         {showPreference
-          ? `👀私の傾向：【${
-              preference
-                ? getPositiveTendencyText(topicId)
-                : getNegativeTendencyText(topicId)
-            }】`
+          ? `${getTendencyText(topicId, preference, language)}`
           : `👀私のタイムライン（${PLAY_CONTENTS_NUM}）`}
       </div>
       <div className="mt-sm flex flex-col gap-xs">
@@ -62,7 +58,11 @@ export const MyTimeline = ({ topicId, showPreference = false }: Props) => {
               content={post.content}
               userPreference={preference}
               userIcon={post.userIcon}
-              useName={post.userName}
+              useName={
+                language === "EN"
+                  ? post.userName.englishName
+                  : post.userName.name
+              }
               likeCount={post.content.likeCount}
             />
           );

@@ -36,6 +36,7 @@ export const SelectionPlay = ({ topicId }: Props) => {
   const [count, setCount] = useState(PLAY_RECOMEND_CONTENTS_NUM);
   const decrementCount = () => setCount((prev) => prev - 1);
   const complete = count < 1;
+  const [language, setLanguage] = useState(""); // 言語設定を保存するための状態
   console.log("count");
 
   const [score, setScore] = useState(DEFAULT_SCORE);
@@ -75,6 +76,8 @@ export const SelectionPlay = ({ topicId }: Props) => {
   };
 
   useEffect(() => {
+    const storedLanguage = localStorage.getItem("language") || "";
+    setLanguage(storedLanguage);
     // TODO: 完了時の画面遷移の見せ方は工夫した方が良さそう。
     if (complete) {
       localStorage.setItem("userScore", score.toString());
@@ -87,16 +90,17 @@ export const SelectionPlay = ({ topicId }: Props) => {
   return (
     <>
       <div className="mr-auto mt-9 font-bold text-xl text-white">
-        👀コメント候補（{count}）
+        {language === "EN" ? "👀Comment candidates" : "👀コメント候補"}（{count}
+        ）
       </div>
       <div className="mt-6">
         <SelectionPost
-          text={content?.text}
+          text={language === "EN" ? content?.englishText : content?.text}
           complete={complete}
           onClickLike={onClickLike}
           onClickSkip={onClickSkip}
           userIcon={userIcon}
-          userName={userName}
+          userName={language === "EN" ? userName.englishName : userName.name}
         />
       </div>
     </>

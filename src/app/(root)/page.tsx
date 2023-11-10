@@ -9,10 +9,17 @@ import { userIcons } from "@/userIcons";
 export default function TopPage() {
   const [userName, setUserName] = useState("");
   const [userIcon, setUserIcon] = useState("");
+  const [language, setLanguage] = useState("JP");
 
   const onClickNext = () => {
     localStorage.setItem("userName", userName);
     localStorage.setItem("userIcon", userIcon);
+  };
+
+  const toggleLanguage = () => {
+    const newLanguage = language === "JP" ? "EN" : "JP";
+    setLanguage(newLanguage);
+    localStorage.setItem("language", newLanguage); // 言語設定をlocalStorageに保存
   };
 
   const topUserIcons = userIcons.slice(0, 15);
@@ -26,17 +33,22 @@ export default function TopPage() {
     setUserName(_userName);
     const _userIcon = localStorage.getItem("userIcon") || "";
     setUserIcon(_userIcon);
+    const _storedLanguage = localStorage.getItem("language") || "JP";
+    setLanguage(_storedLanguage);
   }, []);
 
   return (
     <main className="main-container">
-      <PubbleLogo className="mt-sm" width={150} height={60} />
-      <div className="mt-md text-gray-base text-xl">
-        用途を説明するひとことコピーが入る
+      <div className="w-full">
+        <button className="w-fit mr-auto" onClick={toggleLanguage}>
+          JP/EN
+        </button>
       </div>
+      <PubbleLogo className="" width={150} height={60} />
+
       <div className="w-full">
         <div className="w-fit mr-auto mt-xl font-bold text-lg">
-          🎨️ アイコン選択
+          {language === "JP" ? "🎨️ アイコン選択" : "🎨️ Choose your icon"}
         </div>
         <div className="grid grid-cols-5 gap-4 place-items-center mt-sm">
           {topUserIcons.map((icon, i) => (
@@ -58,10 +70,16 @@ export default function TopPage() {
         </div>
       </div>
       <div className="w-full">
-        <div className="w-fit mt-md font-bold text-lg">🖋 ニックネーム記入</div>
+        <div className="w-fit mt-md font-bold text-lg">
+          {language === "JP" ? "🖋 ニックネーム記入" : "🖋 Enter Nickname"}
+        </div>
         <input
           className="w-full h-[2.625rem] mt-sm pl-xs rounded-xl shadow-base placeholder:font-bold placeholder:text-base"
-          placeholder="好きなネームを入力してね"
+          placeholder={
+            language === "JP"
+              ? "好きなネームを入力してね"
+              : "Please enter a nickname"
+          }
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
@@ -73,7 +91,7 @@ export default function TopPage() {
             onClick={onClickNext}
             disabled={!userName || !userIcon}
           >
-            決定
+            {language === "JP" ? "決定" : "Confirm"}
           </button>
         </Link>
       </div>

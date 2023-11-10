@@ -1,3 +1,5 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import { PubbleLogo } from "@/components/PubbleLogo";
 import { TopicSummary } from "@/components/TopicSummaryForRecomendation";
 import { SelectionPlay } from "@/components/SelectionPlayForRecomendation";
@@ -11,6 +13,11 @@ type Props = {
 
 export default function SelectionPage({ params }: Props) {
   const topicId = Number(params.topicId);
+  const [language, setLanguage] = useState(""); // 言語設定を保存するための状態
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("language") || "";
+    setLanguage(storedLanguage);
+  }, []);
 
   return (
     <main className="main-container">
@@ -24,7 +31,9 @@ export default function SelectionPage({ params }: Props) {
           height={36}
         />
       </div>
-      <div className="mr-auto mt-md font-bold text-xl text-white">📰 概要</div>
+      <div className="mr-auto mt-md font-bold text-xl text-white">
+        {language === "EN" ? "📰 Detail" : "📰 概要"}
+      </div>
       <div className="mt-sm">
         <TopicSummary topicId={0} />
       </div>

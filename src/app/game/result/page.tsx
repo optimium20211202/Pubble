@@ -2,11 +2,17 @@
 import { UserBadgeWithUserInfo } from "@/components/UserBadgWithUserInfo";
 import Link from "next/link";
 import Image from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { useUserScore } from "@/hooks/useUserScore";
 
 const GameResult = () => {
   const score = useUserScore();
+  const [language, setLanguage] = useState(""); // 言語設定を保存するための状態
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("language") || "";
+    setLanguage(storedLanguage);
+  }, []);
+
   return (
     <>
       <div className="w-full flex flex-row justify-between">
@@ -20,21 +26,27 @@ const GameResult = () => {
           height={60}
         />
       </div>
-      <div className="text-center text-xl text-white mt-md">🔥最終結果</div>
+      <div className="text-center text-xl text-white mt-md">
+        {language === "EN" ? "🔥Final result" : "🔥最終結果"}
+      </div>
       <div
         className="flex flex-col p-6 mt-md bg-white rounded-2xl"
         style={{ gap: "22px" }}
       >
         <div className="flex items-center justify-center gap-6">
-          <span className="text-xl">SNS利用時間</span>
+          <span className="text-xl">
+            {" "}
+            {language === "EN" ? "Usage Time" : "SNS利用時間"}
+          </span>
           <span
             className="font-black"
             style={{ fontSize: "60px", lineHeight: "60px" }}
           >
-            +{score}分
+            +{score}
+            {language === "EN" ? "min" : "分"}
           </span>
         </div>
-        <ResultDetail score={score} />
+        <ResultDetail score={score} language={language} />
       </div>
       <div
         className="w-full flex flex-col gap-3 items-center"
@@ -45,7 +57,7 @@ const GameResult = () => {
             className="w-60 h-12 bg-white text-center text-xl font-black rounded-4xl shadow-base tracking-[1rem] indent-[1rem]"
             style={{ color: "#888888", letterSpacing: "1px" }}
           >
-            終　了
+            {language === "EN" ? "Finish" : "終　了"}
           </button>
         </Link>
       </div>
@@ -56,7 +68,13 @@ const GameResult = () => {
 export default GameResult;
 
 // workshop用の実装なので一応コンポーネントとして切り出さずpagesに持たせておく。
-const ResultDetail = ({ score }: { score: number }): ReactNode => {
+const ResultDetail = ({
+  score,
+  language,
+}: {
+  score: number;
+  language: string;
+}): ReactNode => {
   if (score < 0 || score > 69) {
     console.error("スコア値が異常です");
     return;
@@ -72,7 +90,11 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
           width={258}
           height={258}
         />
-        <div className="text-xl font-bold">あら、SNSがつまらないみたい…</div>
+        <div className="text-xl font-bold">
+          {language === "EN"
+            ? "Oh, it seems like social media isn't very interesting..."
+            : "あら、SNSがつまらないみたい…"}
+        </div>
       </div>
     );
   }
@@ -87,7 +109,11 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
           width={258}
           height={258}
         />
-        <div className="text-xl font-bold">まあ、少しSNSを楽しんでる。</div>
+        <div className="text-xl font-bold">
+          {language === "EN"
+            ? "Well, enjoying social media a bit."
+            : "まあ、少しSNSを楽しんでる。"}
+        </div>
       </div>
     );
   }
@@ -102,7 +128,11 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
           width={258}
           height={258}
         />
-        <div className="text-xl font-bold">おー、だいぶSNS にハマってる。</div>
+        <div className="text-xl font-bold">
+          {language === "EN"
+            ? "Oh, quite hooked on social media."
+            : "おー、だいぶSNS にハマってる。"}
+        </div>
       </div>
     );
   }
@@ -116,7 +146,11 @@ const ResultDetail = ({ score }: { score: number }): ReactNode => {
         width={258}
         height={258}
       />
-      <div className="text-xl font-bold">SNSにすごい夢中！やったね！！</div>
+      <div className="text-xl font-bold">
+        {language === "EN"
+          ? "Super absorbed in social media! Awesome!!"
+          : "SNSにすごい夢中！やったね！！"}
+      </div>
     </div>
   );
 };
