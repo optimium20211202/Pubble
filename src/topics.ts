@@ -7,14 +7,23 @@ export const topicList: Topic[] = [
     largeImagePath: "/recommendation_news_image.png",
     positiveTendencyText: "動物園は廃止すべき",
     negativeTendencyText: "動物園はあるべき",
+    englishPositiveTendencyText: "Zoos should be abolished",
+    englishNegativeTendencyText: "Zoos are necessary",
     title: "【 動物園はあるべきか、それともはいしするべきか 】",
+    englishTitle: "【Should Zoos Exist or Should They Be Phased Out? 】",
     text: "日本は動物園大国ですが、その存在については賛否がわかれています。一部では、おりにとじこめられた動物たちがかわいそうだと感じ、おりにとじこめられた動物たちのつらさを問いかける意見があります。\n\nしかし、こども時代に生き物を動物園で直接みた感動や、動物園におけるきしょう動物の保存などのやくわりをひょうかする声も多くあります。今こそ、動物園の新たなかたちをもさくするべきです。",
+    englishText:
+      "Japan is a country with many zoos, but opinions about their existence are divided. Some feel it's pitiful to see animals confined in cages and question the hardships these caged animals endure.\n\nHowever, there are also many who value the awe and wonder they felt seeing living creatures up close at zoos during their childhood, as well as the role zoos play in the conservation of endangered species. Perhaps it's time to consider a new approach to zoos.",
     textShort:
       "動物園の存在に対して賛否が分かれている。動物園はあるべきか、それとも廃止するべきか？",
+    englishTextShort:
+      "The existence of zoos is a subject of divided opinions. Should Zoos Exist or Should They Be Phased Out?",
     contents: [
       {
         id: 0,
         text: "動物をじっさいにみるのは感動します。命の大切さが伝わってくる場所です。",
+        englishText:
+          "Seeing animals up close is truly moving. It's a place where the value of life resonates.",
         label: 0,
 
         userNameId: 0,
@@ -24,6 +33,8 @@ export const topicList: Topic[] = [
       {
         id: 1,
         text: "動物とのふれあいができる場所、動物園以外にありますか？",
+        englishText:
+          "Are there places other than zoos where you can interact with animals?",
         label: 0,
 
         userNameId: 1,
@@ -33,6 +44,8 @@ export const topicList: Topic[] = [
       {
         id: 2,
         text: "動物園はだいじです！ここでしか感じられないつながりがあるんです。",
+        englishText:
+          "Zoos are important! There's a unique connection you can only feel here.",
         label: 0,
 
         userNameId: 2,
@@ -42,6 +55,7 @@ export const topicList: Topic[] = [
       {
         id: 3,
         text: "動物園がなかったら、いろいろと大変なことにならない？",
+        englishText: "Without zoos, wouldn't many things become challenging?",
         label: 0,
 
         userNameId: 3,
@@ -51,6 +65,8 @@ export const topicList: Topic[] = [
       {
         id: 4,
         text: "生物の研究？ それには動物園のやくわり。これほどの場所、ほかにないよね。",
+        englishText:
+          "Research on organisms? That's a role of the zoo. There's no place quite like it.",
         label: 0,
 
         userNameId: 4,
@@ -60,6 +76,7 @@ export const topicList: Topic[] = [
       {
         id: 5,
         text: "動物園は、かぞくの大切なおでかけスポットでありつづけるべき。",
+        englishText: "Zoos should remain a cherished outing spot for families.",
         label: 0,
 
         userNameId: 5,
@@ -69,6 +86,8 @@ export const topicList: Topic[] = [
       {
         id: 6,
         text: " 生き物をちょくせつ見る感動、それはみんなの心に火をつける最高の方法だと思います。",
+        englishText:
+          "The thrill of seeing creatures up close is, I believe, the best way to ignite passion in everyone's heart.",
         label: 0,
 
         userNameId: 6,
@@ -78,6 +97,7 @@ export const topicList: Topic[] = [
       {
         id: 7,
         text: "動物園って、みんなのいやしのパラダイスじゃないですか！",
+        englishText: "Aren't zoos like a paradise of healing for everyone?",
         label: 0,
 
         userNameId: 7,
@@ -87,6 +107,8 @@ export const topicList: Topic[] = [
       {
         id: 8,
         text: "めずらしい動物をじっさいに見れるの、動物園くらいじゃね？",
+        englishText:
+          "Where else can you see rare animals up close, if not at the zoo?",
         label: 0,
 
         userNameId: 8,
@@ -96,6 +118,8 @@ export const topicList: Topic[] = [
       {
         id: 9,
         text: "動物園は命のすばらしさを目の前で学べる大切な場所なんです。",
+        englishText:
+          "Zoos are precious places where you can learn the wonder of life firsthand.",
         label: 0,
 
         userNameId: 9,
@@ -105,6 +129,7 @@ export const topicList: Topic[] = [
       {
         id: 10,
         text: "地域のかんこうスポットとして、動物園は大事なのです。",
+        englishText: "As a local tourist spot, zoos are vital.",
         label: 0,
 
         userNameId: 10,
@@ -114,6 +139,8 @@ export const topicList: Topic[] = [
       {
         id: 11,
         text: "動物園という場をまもるために、みんなで力をあわせるべきです。",
+        englishText:
+          "We should all come together to protect the institution of the zoo.",
         label: 0,
 
         userNameId: 11,
@@ -123,6 +150,8 @@ export const topicList: Topic[] = [
       {
         id: 12,
         text: "動物園を失ったら、多くの感動も失われるんじゃない？",
+        englishText:
+          "If we lose zoos, won't we also lose many moving experiences?",
         label: 0,
 
         userNameId: 12,
@@ -132,6 +161,8 @@ export const topicList: Topic[] = [
       {
         id: 13,
         text: "動物園なしで、子どもたちに生き物のみりょくを教えるのってむずかしいと思うけどなー！ ",
+        englishText:
+          "Without zoos, I think it'd be tough to teach children the allure of living creatures!",
         label: 0,
 
         userNameId: 13,
@@ -141,6 +172,7 @@ export const topicList: Topic[] = [
       {
         id: 14,
         text: "動物園があるから、都会の中でも自然を感じられるんですよね。",
+        englishText: "Thanks to zoos, we can feel nature even within the city.",
         label: 0,
 
         userNameId: 14,
@@ -150,6 +182,8 @@ export const topicList: Topic[] = [
       {
         id: 15,
         text: "動物園なくしたら、動物園ではたらいてる人たちどうなか考えたことありますか？ ",
+        englishText:
+          "Have you ever considered what would happen to the people working at the zoo if it ceased to exist?",
         label: 0,
 
         userNameId: 15,
@@ -159,6 +193,8 @@ export const topicList: Topic[] = [
       {
         id: 16,
         text: "もし動物園がなかったら、人たちは自然の学びに気づくチャンスを失ってしまいます。",
+        englishText:
+          "Without zoos, people would lose the opportunity to learn about nature.",
         label: 0,
 
         userNameId: 16,
@@ -167,7 +203,9 @@ export const topicList: Topic[] = [
       },
       {
         id: 17,
-        text: "ぜつめつ寸前の動物を救う動物園がなかったら、たくさんの動物が助からないと思うんだ。 ",
+        text: "ぜつめつ寸前の動物を救う動物園がなかったら、たくさんの動物が助からないと思うんだ。",
+        englishText:
+          "If there were no zoos to save animals on the brink of extinction, I think many animals wouldn't be saved.",
         label: 0,
 
         userNameId: 17,
@@ -177,6 +215,8 @@ export const topicList: Topic[] = [
       {
         id: 18,
         text: "動物園のはんしょくプログラムは、ぜつめつ寸前の動物を救える奇跡のプロジェクトです。",
+        englishText:
+          "Zoo breeding programs are miraculous projects that can save animals on the brink of extinction.",
         label: 0,
 
         userNameId: 18,
@@ -186,6 +226,8 @@ export const topicList: Topic[] = [
       {
         id: 19,
         text: "生物の研究って、動物園の背後にかくれて行われてる大切なやくわり。そのやくわりを失うわけにはいかないです。",
+        englishText:
+          "Research on organisms is an important role often hidden behind zoos. We can't afford to lose that role.",
         label: 0,
 
         userNameId: 19,
@@ -195,6 +237,8 @@ export const topicList: Topic[] = [
       {
         id: 20,
         text: "動物たちのことを考えると、自然の中で自由にさせたい。動物園から出したい。",
+        englishText:
+          "When I think about the animals, I want them to be free in nature. I wish they were out of zoos.",
         label: 1,
 
         userNameId: 20,
@@ -204,6 +248,8 @@ export const topicList: Topic[] = [
       {
         id: 21,
         text: "教育のためとはいえ、おりの中の動物たちの目はかなしそうじゃない？",
+        englishText:
+          "Even if it's for education, don't the eyes of animals in cages seem sad?",
         label: 1,
 
         userNameId: 21,
@@ -213,6 +259,7 @@ export const topicList: Topic[] = [
       {
         id: 22,
         text: "私たちのごらくのために動物たちをとじこめられるべきではないのです。",
+        englishText: "Animals shouldn't be confined for our entertainment.",
         label: 1,
 
         userNameId: 22,
@@ -222,6 +269,8 @@ export const topicList: Topic[] = [
       {
         id: 23,
         text: "人のエゴで動物を閉じこめる文化は、今すぐに終わらせるべきです！",
+        englishText:
+          "We should immediately put an end to the culture of imprisoning animals for human ego.",
         label: 1,
 
         userNameId: 23,
@@ -231,6 +280,7 @@ export const topicList: Topic[] = [
       {
         id: 24,
         text: "動物園は動物のくるしみを見せものにしているだけ。",
+        englishText: "Zoos are just showcasing the suffering of animals.",
         label: 1,
 
         userNameId: 24,
@@ -240,6 +290,8 @@ export const topicList: Topic[] = [
       {
         id: 25,
         text: "正直、子どもたちに本当の自然の大切さをつたえるためには、動物園はいらない！",
+        englishText:
+          "Honestly, to teach children the true value of nature, we don't need zoos.",
         label: 1,
 
         userNameId: 25,
@@ -249,6 +301,7 @@ export const topicList: Topic[] = [
       {
         id: 26,
         text: "動物園ってさ、動物たちにとってストレスのげんいんじゃない？",
+        englishText: "Aren't zoos a source of stress for animals?",
         label: 1,
 
         userNameId: 26,
@@ -258,6 +311,8 @@ export const topicList: Topic[] = [
       {
         id: 27,
         text: "自然の中で生きる動物たちをとじこめるの、そんなの許せますか？",
+        englishText:
+          "Is it really acceptable to confine animals that should be living in the wild?",
         label: 1,
 
         userNameId: 27,
@@ -267,6 +322,8 @@ export const topicList: Topic[] = [
       {
         id: 28,
         text: "自然にいきる動物たちを見るために、動物園が本当にひつようなのは嘘なんじゃないか。 ",
+        englishText:
+          "I wonder if it's a lie to say that we really need zoos to see animals living in the wild.",
         label: 1,
 
         userNameId: 28,
@@ -276,6 +333,7 @@ export const topicList: Topic[] = [
       {
         id: 29,
         text: "人々に、とじこめられた動物のすがたを見せるのはどうなのかな。",
+        englishText: "Is it right to show people the sight of caged animals?",
         label: 1,
 
         userNameId: 29,
@@ -285,6 +343,8 @@ export const topicList: Topic[] = [
       {
         id: 30,
         text: "ぜつめつのききにある動物を救うのはいいけど、動物園は本当にそのさいてきな方法なの？",
+        englishText:
+          "While saving endangered animals is good, are zoos really the best method?",
         label: 1,
 
         userNameId: 30,
@@ -294,6 +354,8 @@ export const topicList: Topic[] = [
       {
         id: 31,
         text: "もし動物が話せたら、「自由になりたい」と言ってるかもしれませんよ。",
+        englishText:
+          'If animals could talk, they might say, "I want to be free."',
         label: 1,
 
         userNameId: 31,
@@ -303,6 +365,8 @@ export const topicList: Topic[] = [
       {
         id: 32,
         text: "動物園のはいごにかくれた動物の苦しみ、考えたことある？",
+        englishText:
+          "Have you ever considered the hidden suffering of animals behind the walls of zoos?",
         label: 1,
 
         userNameId: 32,
@@ -312,6 +376,7 @@ export const topicList: Topic[] = [
       {
         id: 33,
         text: "動物たちにとって、動物園はかれらの「自然」じゃないよ。",
+        englishText: 'For animals, a zoo isn\'t their "natural" environment.',
         label: 1,
 
         userNameId: 33,
@@ -321,6 +386,7 @@ export const topicList: Topic[] = [
       {
         id: 34,
         text: "動物園ではなくて、本物の自然を見るべきです。",
+        englishText: "Instead of zoos, we should be observing real nature.",
         label: 1,
 
         userNameId: 34,
@@ -330,6 +396,8 @@ export const topicList: Topic[] = [
       {
         id: 35,
         text: "どれだけ動物園にかちあると言っても、それは人間中心のいけんでしかないよね。",
+        englishText:
+          "No matter how much one argues for the merits of zoos, it's still a human-centric view, isn't it?",
         label: 1,
 
         userNameId: 35,
@@ -339,6 +407,8 @@ export const topicList: Topic[] = [
       {
         id: 36,
         text: "動物園はけっきょく、動物たちのしょうばい道具になっちゃってる気がするんだ。",
+        englishText:
+          "I feel like zoos ultimately turn animals into commercial tools.",
         label: 1,
 
         userNameId: 36,
@@ -348,6 +418,8 @@ export const topicList: Topic[] = [
       {
         id: 37,
         text: "みんな動物園楽しいと思ってるけど、動物たちがそれ楽しいと思ってるか？",
+        englishText:
+          "People may enjoy zoos, but do the animals feel the same way?",
         label: 1,
 
         userNameId: 37,
@@ -357,6 +429,8 @@ export const topicList: Topic[] = [
       {
         id: 38,
         text: "現代のぎじゅつでVRとかあるし、動物園はいらないと私は考えております。",
+        englishText:
+          "With today's technology, like VR, I believe we don't need zoos.",
         label: 1,
 
         userNameId: 38,
@@ -366,6 +440,8 @@ export const topicList: Topic[] = [
       {
         id: 39,
         text: "自然の中で、自由であるべき動物たちを、一生おりの中で生活させてはいけないのです。",
+        englishText:
+          "It's not right to force animals, who should be free in nature, to live their entire lives in cages.",
         label: 1,
 
         userNameId: 39,
@@ -746,7 +822,7 @@ export const topicList: Topic[] = [
         likeCount: 8013,
       },
     ],
-    unavailable: false,
+    unavailable: true,
   },
   {
     id: 2,

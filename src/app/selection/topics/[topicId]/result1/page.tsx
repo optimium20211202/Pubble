@@ -1,3 +1,5 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import { Explanation } from "@/components/Explanation";
 import { PubbleLogo } from "@/components/PubbleLogo";
 import { UserBadgeWithUserInfo } from "@/components/UserBadgWithUserInfo";
@@ -18,6 +20,13 @@ export default function Result1Page({
 Props) {
   const topicId = Number(params.topicId);
 
+  const [language, setLanguage] = useState(""); // 言語設定を保存するための状態
+  // コンポーネントのマウント時にローカルストレージから言語設定を読み込む
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("language") || "";
+    setLanguage(storedLanguage);
+  }, []);
+
   return (
     <main className="main-container">
       <div className="w-full flex flex-row justify-between">
@@ -26,14 +35,18 @@ Props) {
       <PubbleLogo className="" isColored width={150} height={60} />
 
       <div className="m-auto mt-md font-bold text-xl">
-        🎉 おつかれさまです！
+        {language === "EN" ? "🎉 Good job!!!" : "🎉 おつかれさまです！"}
       </div>
       <div className="mt-xl">
         <Explanation
           imagePath="/result/result1.png"
           imageHeight={204}
           imageWidth={254}
-          text={`いろいろなコメントを通じて、あなたは、さまざまな意見について、ふれて、考えられたと思います。\n\n他の人のタイムラインには、どのようなコメントが流れていたのでしょうか？`}
+          text={
+            language === "EN"
+              ? `Through various comments, I believe you have touched upon and considered different opinions.\n\n What kind of comments were flowing in other people's timelines?`
+              : `いろいろなコメントを通じて、あなたは、さまざまな意見について、ふれて、考えられたと思います。\n\n他の人のタイムラインには、どのようなコメントが流れていたのでしょうか？`
+          }
         />
       </div>
       <Link className="mt-sm" href={`/selection/topics/${topicId}/result6`}>

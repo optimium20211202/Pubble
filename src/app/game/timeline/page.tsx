@@ -17,10 +17,15 @@ export default function Result3Page({ params }: Props) {
   const topicId = Number(params.topicId);
   const [contents, setContents] = useState<Content[]>();
 
+  const [language, setLanguage] = useState(""); // 言語設定を保存するための状態
+
   useEffect(() => {
     const contentIds = JSON.parse(
       localStorage.getItem("displayedContents") || "[]"
     ) as number[];
+
+    const storedLanguage = localStorage.getItem("language") || "";
+    setLanguage(storedLanguage);
 
     const _contents = getContentsForRecomendation(0);
 
@@ -44,7 +49,10 @@ export default function Result3Page({ params }: Props) {
         className="mr-auto mt-md font-bold text-xl 	
 text-white"
       >
-        👀この人のいいね（{PLAY_GAME_NUM}）
+        {language === "EN"
+          ? "👀The viewer's list of likes"
+          : "👀この人のいいね"}
+        （{PLAY_GAME_NUM}）
       </div>
 
       <div className="mt-sm flex flex-col gap-xs">
@@ -54,12 +62,12 @@ text-white"
       </div>
       <Link className="mt-lg" href={`/game/play`}>
         <button className="w-60 h-12 bg-blue-base text-center text-white text-xl font-black rounded-4xl shadow-base tracking-[1rem] indent-[1rem]">
-          次へ
+          {language === "EN" ? "NEXT" : "次へ"}
         </button>
       </Link>
       <Link className="mt-sm" href={`/game/news`}>
         <button className="w-60 h-12 text-center text-xl font-bold tracking-[1rem] indent-[1rem] text-white">
-          戻る
+          {language === "EN" ? "BACK" : "戻る"}
         </button>
       </Link>
     </main>

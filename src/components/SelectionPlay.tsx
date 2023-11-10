@@ -31,6 +31,7 @@ export const SelectionPlay = ({ topicId }: Props) => {
   const displayedContents = useRef<number[]>([]);
   const displayedPosts = useRef<Post[]>([]);
   const [count, setCount] = useState(PLAY_CONTENTS_NUM);
+  const [language, setLanguage] = useState(""); // 言語設定を保存するための状態
   const decrementCount = () => setCount((prev) => prev - 1);
   const complete = count < 1;
   const updateDisplayedContents = (displayedContentId: number) => {
@@ -97,6 +98,8 @@ export const SelectionPlay = ({ topicId }: Props) => {
   };
 
   useEffect(() => {
+    const storedLanguage = localStorage.getItem("language") || "";
+    setLanguage(storedLanguage);
     // TODO: 完了時の画面遷移の見せ方は工夫した方が良さそう。
     if (complete) {
       // console.log(displayedContents.current);
@@ -128,16 +131,22 @@ export const SelectionPlay = ({ topicId }: Props) => {
   return (
     <>
       <div className="mr-auto mt-9 font-bold text-xl">
-        👀SNSコメント（{count}）
+        {language === "EN" ? "👀SNS comment" : "👀SNSコメント"}（{count}）
       </div>
       <div className="mt-6">
         <SelectionPost
-          text={content?.text}
+          text={
+            language === "EN" ? (content.englishText as string) : content?.text
+          }
           complete={complete}
           onClickLike={onClickLike}
           onClickSkip={onClickSkip}
           userIcon={userIcons[content.userIconId]}
-          userName={userNames[content.userNameId]}
+          userName={
+            language === "EN"
+              ? userNames[content.userNameId].englishName
+              : userNames[content.userNameId].name
+          }
           likeCount={content.likeCount}
         />
       </div>
