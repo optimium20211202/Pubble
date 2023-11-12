@@ -1,3 +1,5 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import { UserBadge } from "./UserBadge";
 import { HeartIcon } from "@heroicons/react/20/solid";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -19,6 +21,12 @@ export const SelectionPost = ({
   userIcon,
   userName,
 }: Props) => {
+  const [language, setLanguage] = useState(""); // 言語設定を保存するための状態
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("language") || "";
+    setLanguage(storedLanguage);
+  }, []);
+
   return (
     <div className="h-[17.25rem] flex flex-col bg-white rounded-xl p-xs pb-sm ">
       {!complete && <UserBadge userIcon={userIcon} userName={userName} />}
@@ -29,8 +37,8 @@ export const SelectionPost = ({
           onClick={onClickLike}
           disabled={complete}
         >
-          <HeartIcon className="h-5 w-5 pt-0.5" />
-          おすすめする
+          <HeartIcon className="h-5 w-5 pt-0.5 text-xs" />
+          {language === "EN" ? "Recommend" : "おすすめする"}
         </button>
         <button
           className="w-40 h-12 flex items-center justify-center gap-xs bg-white border-tundora border-3 rounded-xl shadow-base text-tundora text-l font-blacktext-xl font-black"
@@ -38,7 +46,7 @@ export const SelectionPost = ({
           disabled={complete}
         >
           <XMarkIcon className="h-5 w-5 stroke-[4px] pt-0.5" />
-          おすすめしない
+          {language === "EN" ? "Skip" : "おすすめしない"}
         </button>
       </div>
     </div>
