@@ -37,7 +37,7 @@ export const SelectionPost = ({
           onClick={onClickLike}
           disabled={complete}
         >
-          <HeartIcon className="h-5 w-5 pt-0.5 text-xs" />
+          <HeartIcon className="h-5 w-5 pt-0.5" />
           {language === "EN" ? "Recommend" : "おすすめする"}
         </button>
         <button
